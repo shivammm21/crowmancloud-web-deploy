@@ -244,9 +244,18 @@ This message was sent via the CrowmanCloud contact form.
                             <div className="contact-method">
                                 <div className="contact-icon">🐛</div>
                                 <div className="contact-details">
-                                    <h4>Bug Reports</h4>
-                                    <p>Report issues on GitHub</p>
+                                    <h4>Bug Reports & Issues</h4>
+                                    <p><a href="https://github.com/crowmancloud" target="_blank" rel="noopener noreferrer">Report issues on GitHub</a></p>
                                     <span>Help us improve CrowmanCloud</span>
+                                </div>
+                            </div>
+
+                            <div className="contact-method">
+                                <div className="contact-icon">🤝</div>
+                                <div className="contact-details">
+                                    <h4>Contribute</h4>
+                                    <p><a href="https://github.com/crowmancloud" target="_blank" rel="noopener noreferrer">Visit our GitHub</a></p>
+                                    <span>Join our open-source community</span>
                                 </div>
                             </div>
                         </div>
