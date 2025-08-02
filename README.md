@@ -189,11 +189,40 @@ The build artifacts will be stored in the `dist/` directory, ready for deploymen
 
 ## 🤝 Contributing
 
+We welcome contributions from developers of all skill levels! Whether you want to fix bugs, add features, improve documentation, or enhance the design, your contributions are valued.
+
+### Quick Start for Contributors
+
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
+
+### Detailed Guidelines
+
+For comprehensive contribution guidelines, coding standards, development setup, and community guidelines, please read our **[Contributing Guide](CONTRIBUTING.md)**.
+
+The contributing guide covers:
+- 🚀 Development setup and prerequisites
+- 📝 Coding standards and best practices
+- 🎨 Design guidelines and accessibility requirements
+- 🧪 Testing procedures
+- 📋 Pull request process and templates
+- 🐛 How to report issues and request features
+- 📞 Getting help and community support
+
+### Types of Contributions Welcome
+
+- **🐛 Bug Reports** - Help us identify and fix issues
+- **✨ Feature Requests** - Suggest new features or improvements
+- **📝 Documentation** - Improve or add to our documentation
+- **🎨 Design Improvements** - Enhance UI/UX and visual design
+- **🔧 Code Contributions** - Fix bugs, add features, or optimize performance
+- **🌐 Translations** - Help make CrowmanCloud accessible globally
+- **📱 Accessibility** - Improve accessibility and usability
+
+**New to open source?** Check out our [Contributing Guide](CONTRIBUTING.md) for a beginner-friendly introduction to contributing to this project.
 
 ## 📄 License
 
