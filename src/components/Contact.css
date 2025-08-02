@@ -222,8 +222,7 @@
 
 .contact-method {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  flex-direction: column;
   padding: 1.5rem;
   background: #f9fafb;
   border-radius: 12px;
