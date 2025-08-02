@@ -222,7 +222,7 @@
 
 .contact-method {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
   margin-bottom: 1.5rem;
   padding: 1.5rem;
   background: #f9fafb;
