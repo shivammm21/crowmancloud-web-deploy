@@ -1,0 +1,432 @@
+/* Download Page Styles */
+.download-page {
+  min-height: 100vh;
+  background: #fff;
+  font-family: 'Inter', Arial, sans-serif;
+  padding: 2rem 0;
+}
+
+.download-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.download-content {
+  margin-bottom: 4rem;
+}
+
+.download-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.download-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #18181b;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.download-header p {
+  font-size: 1.2rem;
+  color: #6b7280;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.download-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.download-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.tool-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #18181b;
+  margin-bottom: 0.75rem;
+}
+
+.tool-section p {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.download-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  min-width: 180px;
+  justify-content: center;
+}
+
+.download-btn.primary {
+  background: #009ee3;
+  color: #fff;
+}
+
+.download-btn.primary:hover {
+  background: #007bb8;
+  transform: translateY(-1px);
+}
+
+.download-btn.selected {
+  background: #007bb8;
+  box-shadow: 0 4px 12px rgba(0, 158, 227, 0.3);
+}
+
+.os-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.os-icon.fallback-icon {
+  font-size: 1.2rem;
+  width: auto;
+  height: auto;
+}
+
+.download-info {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.download-info p {
+  margin-bottom: 0.5rem;
+}
+
+.download-info a {
+  color: #009ee3;
+  text-decoration: none;
+}
+
+.download-info a:hover {
+  text-decoration: underline;
+}
+
+.release-notes {
+  font-weight: 600;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #009ee3;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+  padding: 0;
+  margin: 0 0.25rem;
+}
+
+.link-btn:hover {
+  color: #007bb8;
+}
+
+.version-section {
+  background: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.version-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 1rem;
+}
+
+.version-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.version-item {
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.version-item strong {
+  color: #18181b;
+  font-weight: 600;
+}
+
+.release-link {
+  color: #009ee3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.release-link:hover {
+  text-decoration: underline;
+}
+
+.download-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-preview {
+  width: 100%;
+  max-width: 500px;
+}
+
+.app-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.app-preview img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 158, 227, 0.2);
+}
+
+.features-section {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #18181b;
+  margin-bottom: 2.5rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  background: #f9fafb;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: #009ee3;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 0.75rem;
+}
+
+.feature-item p {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.system-requirements {
+  margin: 4rem 0;
+}
+
+.system-requirements h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #18181b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.requirement-item {
+  background: #f9fafb;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.requirement-item h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-align: left;
+}
+
+.requirement-os-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin: 0 auto 1rem auto;
+  display: block;
+}
+
+.requirement-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.requirement-item li {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+  text-align: left;
+}
+
+.requirement-item li::before {
+  content: "•";
+  color: #009ee3;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .download-page {
+    padding: 1rem 0;
+  }
+
+  .download-container {
+    padding: 0 1rem;
+  }
+
+  .download-header h1 {
+    font-size: 2rem;
+  }
+
+  .download-header p {
+    font-size: 1rem;
+  }
+
+  .download-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .download-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .download-btn {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .requirements-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .feature-item,
+  .requirement-item {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .download-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .tool-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .features-section h2,
+  .system-requirements h2 {
+    font-size: 1.5rem;
+  }
+
+  .download-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .feature-item,
+  .requirement-item,
+  .version-section {
+    padding: 1.25rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+  .download-container {
+    padding: 0 0.75rem;
+  }
+
+  .download-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .download-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
