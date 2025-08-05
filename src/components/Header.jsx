@@ -33,8 +33,8 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
             <span className="nav-title">Company</span>
             <div className="nav-dropdown">
               <a href="#" onClick={() => navigateToPage('about')}>About</a>
-              <a href="#">Careers</a>
-              <a href="#">Blog</a>
+              <a href="#" onClick={() => navigateToPage('career')}>Careers</a>
+              <a href="#" onClick={() => navigateToPage('blog')}>Blog</a>
               <a href="#" onClick={() => navigateToPage('contact')}>Contact</a>
             </div>
           </div>
@@ -78,8 +78,8 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
               <a href="#" onClick={() => navigateToPage('documentation')}>Documentation</a>
               <a href="#" onClick={handleMenuClose}>API Reference</a>
               <a href="#" onClick={() => navigateToPage('about')}>About</a>
-              <a href="#" onClick={handleMenuClose}>Careers</a>
-              <a href="#" onClick={handleMenuClose}>Blog</a>
+              <a href="#" onClick={() => navigateToPage('career')}>Careers</a>
+              <a href="#" onClick={() => navigateToPage('blog')}>Blog</a>
               <a href="#" onClick={() => navigateToPage('contact')}>Contact</a>
               <a href="#" onClick={() => navigateToPage('help')}>Help Center</a>
               <a href="#" onClick={handleMenuClose}>Community</a>

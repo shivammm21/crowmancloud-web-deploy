@@ -15,6 +15,8 @@ import Privacy from './components/Privacy';
 import Terms from './components/Terms';
 import Security from './components/Security';
 import Documentation from './components/Documentation';
+import Blog from './components/Blog';
+import Career from './components/Career';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -122,6 +124,28 @@ function App() {
     );
   }
 
+  // Render blog page if selected
+  if (currentPage === 'blog') {
+    return (
+      <div className="landing-root">
+        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Blog onNavigate={navigateToPage} />
+        <Footer onNavigate={navigateToPage} />
+      </div>
+    );
+  }
+
+  // Render career page if selected
+  if (currentPage === 'career') {
+    return (
+      <div className="landing-root">
+        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Career onNavigate={navigateToPage} />
+        <Footer onNavigate={navigateToPage} />
+      </div>
+    );
+  }
+
   return (
     <div className="landing-root">
       <Header onNavigate={navigateToPage} currentPage={currentPage} />
@@ -166,6 +190,36 @@ function App() {
           </div>
         </div>
       </div>
+
+      <section className="tool-intro-section">
+        <div className="tool-intro-content">
+          <div className="tool-intro-video">
+            <iframe
+              width="720"
+              height="405"
+              src="https://www.youtube.com/embed/ErtvlAxKvDs?si=cjvuxpoTeoyIJt5e&controls=0&rel=0"
+              title="CrowmanCloud Tool Introduction"
+              style={{ border: 0 }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen>
+            </iframe>
+          </div>
+          <div className="tool-intro-info">
+            <h2>See CrowmanCloud in Action</h2>
+            <p>Watch our comprehensive tool introduction to see how CrowmanCloud streamlines your pre-deployment workflow.</p>
+            <ul>
+              <li>Complete project analysis in under 2 minutes</li>
+              <li>Automated infrastructure file generation</li>
+              <li>Real-time cloud service recommendations</li>
+              <li>Interactive cost estimation dashboard</li>
+              <li>Security vulnerability detection</li>
+            </ul>
+            <p>Discover how our local-first approach keeps your code secure while providing enterprise-grade analysis capabilities.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="local-first-section">
         <h2>Why Local-First Matters</h2>
         <h3>Your Code Stays Yours.</h3>
@@ -174,6 +228,7 @@ function App() {
         <p>Our powerful analysis engine runs entirely on your localhost. This means you get all the benefits of a comprehensive pre-deployment check with the absolute peace of mind that your proprietary information remains private and secure. It's the enterprise-grade security you need, with the developer-friendly workflow you want.</p>
 
       </section>
+
       <section className="team-gradient-section">
         <div className="team-gradient-content">
           <h2>Built for Every Stage of Your Team</h2>
