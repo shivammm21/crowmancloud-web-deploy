@@ -1,12 +1,13 @@
 import React from 'react';
 import logo from '../assets/logo.png';
+import darkLogo from '../assets/logo-dark.png'
 
 const Footer = ({ onNavigate }) => {
   return (
     <footer className="landing-footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <img src={logo} alt="CrowmanCloud Logo" />
+          <img src={darkLogo} alt="CrowmanCloud Logo" />
           <span className="footer-logo-text">
             <b>Crowman</b><span className="inspector-light">Cloud</span>
           </span>
