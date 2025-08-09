@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import './Download.css';
-import macbookImage from '../assets/MacBook Air - 2.png';
+import demoImage from '../assets/demo/1.png';
 import winLogo from '../assets/win.png';
 import linuxLogo from '../assets/linux.png';
 
-const Download = () => {
+const Download = ({ onNavigate }) => {
     const [selectedOS, setSelectedOS] = useState('windows');
 
     const downloadLinks = {
@@ -48,68 +48,56 @@ const Download = () => {
                         <h1>Get Started with CrowmanCloud</h1>
                         <p>Download the free desktop app and get a complete cloud readiness report in minutes. Analyze your projects securely on your local machine—no code is ever uploaded.</p>
                     </div>
+                    <div className="hero-image-section">
+                        <div className="laptop-hero">
+                            <img src={demoImage} alt="CrowmanCloud Application Interface" />
+                        </div>
+                    </div>
+
+
 
                     <div className="download-main">
                         <div className="download-left">
                             <div className="tool-section">
-                                <h2>The CrowmanCloud tool</h2>
-                                <p>Download the app to get started with the CrowmanCloud Platform.</p>
+                                <div className="version-header">
+                                    <h3>Stable – 1.0.0 <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('release-notes'); }} className="release-notes-link">(see release notes)</a></h3>
+                                </div>
 
-                                <div className="download-buttons">
-                                    <button
-                                        className={`download-btn primary ${selectedOS === 'windows' ? 'selected' : ''}`}
-                                        onClick={() => {
-                                            setSelectedOS('windows');
-                                            handleDownload('windows');
-                                        }}
-                                    >
-                                        {downloadLinks.windows.isImage ? (
-                                            <img src={downloadLinks.windows.icon} alt="Windows" className="os-icon" />
-                                        ) : (
-                                            <span className="os-icon">{downloadLinks.windows.icon}</span>
-                                        )}
-                                        Download (Windows)
-                                    </button>
-                                    <button
-                                        className={`download-btn primary ${selectedOS === 'linux' ? 'selected' : ''}`}
-                                        onClick={() => {
-                                            setSelectedOS('linux');
-                                            handleDownload('linux');
-                                        }}
-                                    >
-                                        {downloadLinks.linux.isImage ? (
-                                            <img src={downloadLinks.linux.icon} alt="Linux" className="os-icon" />
-                                        ) : (
-                                            <span className="os-icon">{downloadLinks.linux.icon}</span>
-                                        )}
-                                        Download (Linux)
-                                    </button>
+                                <div className="download-options">
+                                    <div className="download-option">
+                                        <div className="os-info">
+                                            {downloadLinks.windows.isImage ? (
+                                                <img src={downloadLinks.windows.icon} alt="Windows" className="os-icon-large" />
+                                            ) : (
+                                                <span className="os-icon-large">{downloadLinks.windows.icon}</span>
+                                            )}
+                                            <h4>Windows 10/11 (64bit)</h4>
+                                        </div>
+                                        <button onClick={() => navigateToPage('download')} className="btn btn-primary btn-small">Download</button>
+                                        <p className="os-description">Home, Pro (recommended), Enterprise</p>
+
+                                    </div>
+
+                                    <div className="download-option">
+                                        <div className="os-info">
+                                            {downloadLinks.linux.isImage ? (
+                                                <img src={downloadLinks.linux.icon} alt="Linux" className="os-icon-large" />
+                                            ) : (
+                                                <span className="os-icon-large">{downloadLinks.linux.icon}</span>
+                                            )}
+                                            <h4>Linux (64bit)</h4>
+                                        </div>
+                                        <button onClick={() => navigateToPage('download')} className="btn btn-primary btn-small">Download</button>
+                                        <p className="os-description">Ubuntu, Debian, Fedora</p>
+
+
+                                    </div>
                                 </div>
 
                                 <div className="download-info">
-                                    <p>By downloading and using CrowmanCloud, I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms</a>.</p>
-                                    <p><a href="#" className="release-notes">Release Notes →</a></p>
-                                    <p className="os-alternatives">
-                                        Not your OS? Download for
-                                        <button
-                                            className="link-btn"
-                                            onClick={() => {
-                                                setSelectedOS('windows');
-                                                handleDownload('windows');
-                                            }}
-                                        >
-                                            Windows (x64)
-                                        </button> or
-                                        <button
-                                            className="link-btn"
-                                            onClick={() => {
-                                                setSelectedOS('mac');
-                                                handleDownload('mac');
-                                            }}
-                                        >
-                                            macOS
-                                        </button>
-                                    </p>
+                                    <p>By downloading and using CrowmanCloud, I agree to the <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('privacy'); }}>Privacy Policy</a> and <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('terms'); }}>Terms</a>.</p>
+                                    <p><a href="#" onClick={(e) => { e.preventDefault(); onNavigate('release-notes'); }} className="release-notes">Release Notes →</a></p>
+
                                 </div>
                             </div>
 
@@ -126,15 +114,11 @@ const Download = () => {
                                         <strong>File Size:</strong> {downloadLinks[selectedOS].size}
                                     </div>
                                 </div>
-                                <p>See what's new in the latest version. Check out the <a href="#" className="release-link">[Release Notes]</a>.</p>
+                                <p>See what's new in the latest version. Check out the <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('release-notes'); }} className="release-link">[Release Notes]</a>.</p>
                             </div>
                         </div>
 
-                        <div className="download-right">
-                            <div className="app-preview">
-                                <img src={macbookImage} alt="CrowmanCloud Application Interface" />
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 

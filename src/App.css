@@ -20,6 +20,39 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.landing-header.scrolled {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  padding: 0.6rem 0 !important;
+  margin: 1rem 2rem 0 2rem !important;
+  border-radius: 50px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  max-width: calc(100% - 4rem) !important;
+  top: 1rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  animation: slideDown 0.3s ease-out !important;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.landing-header.scrolled .header-content {
+  padding: 0 2rem;
+  max-width: none;
 }
 
 .header-content {
@@ -554,6 +587,17 @@
     font-size: 1.3rem;
   }
 
+  .landing-header.scrolled {
+    margin: 0.5rem 1rem 0 1rem;
+    max-width: calc(100% - 2rem);
+    padding: 0.5rem 0;
+    border-radius: 25px;
+  }
+
+  .landing-header.scrolled .header-content {
+    padding: 0 1.5rem;
+  }
+
   .logo-text {
     font-size: 1.2rem;
   }
@@ -685,6 +729,17 @@
   .landing-header {
     padding: 0.8rem 1rem;
     font-size: 1.2rem;
+  }
+
+  .landing-header.scrolled {
+    margin: 0.25rem 0.5rem 0 0.5rem;
+    max-width: calc(100% - 1rem);
+    padding: 0.4rem 0;
+    border-radius: 20px;
+  }
+
+  .landing-header.scrolled .header-content {
+    padding: 0 1rem;
   }
 
   .header-content {
@@ -921,16 +976,6 @@
   width: 100%;
   height: auto;
   max-width: 550px;
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.demo-image img:hover {
-  box-shadow: 0 25px 50px rgba(127, 47, 251, 0.4),
-    0 0 30px rgba(127, 47, 251, 0.3);
-  transform: translateY(-5px);
 }
 
 /* Responsive styles for product demo section */
@@ -988,7 +1033,6 @@
 
   .demo-image img {
     max-width: 100%;
-    border-radius: 8px;
   }
 }
 

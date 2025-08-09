@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../assets/logo.png';
 
 const Header = ({ onNavigate, currentPage = 'home' }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleMenuToggle = () => setMobileMenuOpen((open) => !open);
   const handleMenuClose = () => setMobileMenuOpen(false);
@@ -12,8 +13,32 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
     handleMenuClose();
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    // Initial check
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="landing-header">
+    <header
+      className={`landing-header ${isScrolled ? 'scrolled' : ''}`}
+      style={{
+        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'rgba(255, 255, 255, 0.6)',
+        borderRadius: isScrolled ? '50px' : '0px',
+        margin: isScrolled ? '1rem 2rem 0 2rem' : '0',
+        maxWidth: isScrolled ? 'calc(100% - 4rem)' : '100%',
+        top: isScrolled ? '1rem' : '0',
+        boxShadow: isScrolled ? '0 10px 40px rgba(0, 0, 0, 0.15)' : 'none',
+        transition: 'all 0.3s ease'
+      }}
+    >
       <div className="header-content">
         <div className="header-logo" onClick={() => navigateToPage('home')} style={{ cursor: 'pointer' }}>
           <img src={logo} alt="CrowmanCloud Logo" />
@@ -26,7 +51,7 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
               <a href="#" onClick={() => navigateToPage('home')}>Features</a>
               <a href="#" onClick={() => navigateToPage('pricing')}>Pricing</a>
               <a href="#" onClick={() => navigateToPage('documentation')}>Documentation</a>
-              <a href="#">API Reference</a>
+              
             </div>
           </div>
           <div className="nav-group">
@@ -42,9 +67,8 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
             <span className="nav-title">Resources</span>
             <div className="nav-dropdown">
               <a href="#" onClick={() => navigateToPage('help')}>Help Center</a>
-              <a href="#">Community</a>
-              <a href="#">Tutorials</a>
-              <a href="#">Status</a>
+              
+              <a href="#" onClick={() => navigateToPage('tutorial')}>Tutorials</a>
             </div>
           </div>
           <div className="nav-group">
@@ -53,7 +77,6 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
               <a href="#" onClick={() => navigateToPage('privacy')}>Privacy Policy</a>
               <a href="#" onClick={() => navigateToPage('terms')}>Terms of Service</a>
               <a href="#" onClick={() => navigateToPage('security')}>Security</a>
-              <a href="#">Compliance</a>
             </div>
           </div>
         </nav>
@@ -63,7 +86,7 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
             <span></span>
             <span></span>
           </button>
-          <a href="#" className="btn btn-outline btn-small">Sign In</a>
+
           <button onClick={() => navigateToPage('download')} className="btn btn-primary btn-small">Download</button>
         </div>
       </div>
@@ -82,13 +105,11 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
               <a href="#" onClick={() => navigateToPage('blog')}>Blog</a>
               <a href="#" onClick={() => navigateToPage('contact')}>Contact</a>
               <a href="#" onClick={() => navigateToPage('help')}>Help Center</a>
-              <a href="#" onClick={handleMenuClose}>Community</a>
-              <a href="#" onClick={handleMenuClose}>Tutorials</a>
-              <a href="#" onClick={handleMenuClose}>Status</a>
+              
+              <a href="#" onClick={() => navigateToPage('tutorial')}>Tutorials</a>
               <a href="#" onClick={() => navigateToPage('privacy')}>Privacy Policy</a>
               <a href="#" onClick={() => navigateToPage('terms')}>Terms of Service</a>
               <a href="#" onClick={() => navigateToPage('security')}>Security</a>
-              <a href="#" onClick={handleMenuClose}>Compliance</a>
             </nav>
           </div>
         </div>

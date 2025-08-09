@@ -1,9 +1,9 @@
 import './App.css'
 import React, { useState } from 'react';
 import logo from './assets/logo.png'
-import macbookImage from './assets/MacBook Air - 1.png'
-import macbookImage2 from './assets/MacBook Air - 2.png'
-import macbookImage3 from './assets/MacBook Air - 3.png'
+import macbookImage from './assets/demo/1.png'
+import macbookImage2 from './assets/demo/2.png'
+import macbookImage3 from './assets/demo/3.png'
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -17,6 +17,8 @@ import Security from './components/Security';
 import Documentation from './components/Documentation';
 import Blog from './components/Blog';
 import Career from './components/Career';
+import ReleaseNotes from './components/ReleaseNotes';
+import Tutorial from './components/Tutorial';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -41,7 +43,7 @@ function App() {
     return (
       <div className="landing-root">
         <Header onNavigate={navigateToPage} currentPage={currentPage} />
-        <Download />
+        <Download onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
     );
@@ -145,6 +147,30 @@ function App() {
       </div>
     );
   }
+
+  // Render release notes page if selected
+  if (currentPage === 'release-notes') {
+    return (
+      <div className="landing-root">
+        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <ReleaseNotes onNavigate={navigateToPage} />
+        <Footer onNavigate={navigateToPage} />
+      </div>
+    );
+  }
+
+  // Render tutorial page if selected
+  if (currentPage === 'tutorial') {
+    return (
+      <div className="landing-root">
+        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Tutorial onNavigate={navigateToPage} />
+        <Footer onNavigate={navigateToPage} />
+      </div>
+    );
+  }
+
+
 
   return (
     <div className="landing-root">
@@ -275,7 +301,7 @@ function App() {
       </section>
       <section className="readiness-report-section">
         <div className="readiness-content">
-          <div className="readiness-image">
+          <div className="demo-image">
             <img src={macbookImage2} alt="CrowmanCloud Readiness Report Interface" />
           </div>
           <div className="readiness-text">
@@ -290,7 +316,7 @@ function App() {
             <h2>Fewer roadblocks means higher-quality deployments</h2>
             <p>Move fast to build quality applications without breaking things. By managing every phase of the pre-deployment workflow on a single platform, your team can make informed decisions together.</p>
           </div>
-          <div className="deployment-image">
+          <div className="demo-image">
             <img src={macbookImage3} alt="CrowmanCloud Deployment Quality Interface" />
           </div>
         </div>
