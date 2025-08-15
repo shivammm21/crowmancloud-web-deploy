@@ -50,8 +50,9 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
             <div className="nav-dropdown">
               <a href="#" onClick={() => navigateToPage('home')}>Features</a>
               <a href="#" onClick={() => navigateToPage('pricing')}>Pricing</a>
+              {/*<a href="#" onClick={() => navigateToPage('architecture')}>Architecture</a> */}
               <a href="#" onClick={() => navigateToPage('documentation')}>Documentation</a>
-              
+              <a href="#">API Reference</a>
             </div>
           </div>
           <div className="nav-group">
@@ -98,6 +99,7 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
             <nav className="mobile-nav-links">
               <a href="#" onClick={() => navigateToPage('home')}>Features</a>
               <a href="#" onClick={() => navigateToPage('pricing')}>Pricing</a>
+              <a href="#" onClick={() => navigateToPage('architecture')}>Architecture</a>
               <a href="#" onClick={() => navigateToPage('documentation')}>Documentation</a>
               <a href="#" onClick={handleMenuClose}>API Reference</a>
               <a href="#" onClick={() => navigateToPage('about')}>About</a>

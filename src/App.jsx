@@ -1,6 +1,7 @@
 import './App.css'
 import React, { useState } from 'react';
 import logo from './assets/logo.png'
+import landingVideo from './assets/demo-video.mp4'
 import macbookImage from './assets/demo/1.png'
 import macbookImage2 from './assets/demo/2.png'
 import macbookImage3 from './assets/demo/3.png'
@@ -19,11 +20,13 @@ import Blog from './components/Blog';
 import Career from './components/Career';
 import ReleaseNotes from './components/ReleaseNotes';
 import Tutorial from './components/Tutorial';
+import Architecture from './components/Architecture';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
   const navigateToPage = (page) => {
+    console.log('Navigating to:', page);
     setCurrentPage(page);
   };
 
@@ -165,6 +168,17 @@ function App() {
       <div className="landing-root">
         <Header onNavigate={navigateToPage} currentPage={currentPage} />
         <Tutorial onNavigate={navigateToPage} />
+        <Footer onNavigate={navigateToPage} />
+      </div>
+    );
+  }
+
+  // Render architecture page if selected
+  if (currentPage === 'architecture') {
+    return (
+      <div className="landing-root">
+        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Architecture onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
     );
