@@ -85,10 +85,10 @@ const About = ({ onNavigate }) => {
                 Every developer has faced this: your app runs fine on your computer, but once you try to deploy it to the cloud, everything starts to break. Configuration problems, security risks, high costs, and compatibility issues make things frustrating.
               </p>
               <p>
-                That’s why we built CloudInspector. We’ve been through these same struggles ourselves. As developers and cloud engineers, we saw many teams dealing with the same cloud deployment headaches. Most tools out there were either too complicated or required uploading private code to external servers.
+                That’s why we built Crowmancloud. We’ve been through these same struggles ourselves. As developers and cloud engineers, we saw many teams dealing with the same cloud deployment headaches. Most tools out there were either too complicated or required uploading private code to external servers.
               </p>
               <p>
-                CloudInspector is different. It runs completely on your own machine, so your code stays private. It gives you powerful code analysis just like big enterprise tools but in a simple, developer-friendly way. We’re not a typical cloud service. we’re a local-first tool that helps you get cloud-ready without compromising your privacy.
+                CrowmanCloud is different. It runs completely on your own machine, so your code stays private. It gives you powerful code analysis just like big enterprise tools but in a simple, developer-friendly way. We’re not a typical cloud service. we’re a local-first tool that helps you get cloud-ready without compromising your privacy.
               </p>
             </div>
           </div>

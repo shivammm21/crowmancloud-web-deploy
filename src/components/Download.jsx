@@ -3,6 +3,7 @@ import './Download.css';
 import demoImage from '../assets/demo/1.png';
 import winLogo from '../assets/win.png';
 import linuxLogo from '../assets/linux.png';
+import macLogo from '../assets/macos.svg';
 
 const Download = ({ onNavigate }) => {
     const [selectedOS, setSelectedOS] = useState('windows');
@@ -21,8 +22,8 @@ const Download = ({ onNavigate }) => {
             version: '1.0.0',
             size: '42.8 MB',
             url: '#',
-            icon: '🍎',
-            isImage: false
+            icon: macLogo,
+            isImage: true
         },
         linux: {
             name: 'Linux',
@@ -72,9 +73,25 @@ const Download = ({ onNavigate }) => {
                                                 <span className="os-icon-large">{downloadLinks.windows.icon}</span>
                                             )}
                                             <h4>Windows 10/11 (64bit)</h4>
+                                            <span className="badge-soon">Coming soon</span>
                                         </div>
-                                        <button onClick={() => navigateToPage('download')} className="btn btn-primary btn-small">Download</button>
+                                        <button className="btn btn-primary btn-small" disabled aria-disabled="true">Coming soon</button>
                                         <p className="os-description">Home, Pro (recommended), Enterprise</p>
+
+                                    </div>
+
+                                    <div className="download-option">
+                                        <div className="os-info">
+                                            {downloadLinks.mac.isImage ? (
+                                                <img src={downloadLinks.mac.icon} alt="macOS" className="os-icon-large" />
+                                            ) : (
+                                                <span className="os-icon-large">{downloadLinks.mac.icon}</span>
+                                            )}
+                                            <h4>macOS (Intel/Apple Silicon)</h4>
+                                            <span className="badge-soon">Coming soon</span>
+                                        </div>
+                                        <button className="btn btn-primary btn-small" disabled aria-disabled="true">Coming soon</button>
+                                        <p className="os-description">macOS 12 Monterey or later</p>
 
                                     </div>
 
@@ -86,8 +103,9 @@ const Download = ({ onNavigate }) => {
                                                 <span className="os-icon-large">{downloadLinks.linux.icon}</span>
                                             )}
                                             <h4>Linux (64bit)</h4>
+                                            <span className="badge-soon">Coming soon</span>
                                         </div>
-                                        <button onClick={() => navigateToPage('download')} className="btn btn-primary btn-small">Download</button>
+                                        <button className="btn btn-primary btn-small" disabled aria-disabled="true">Coming soon</button>
                                         <p className="os-description">Ubuntu, Debian, Fedora</p>
 
 
@@ -174,6 +192,21 @@ const Download = ({ onNavigate }) => {
                                 <li>4 GB RAM minimum, 8 GB recommended</li>
                                 <li>500 MB free disk space</li>
                                 <li>Internet connection for updates</li>
+                            </ul>
+                        </div>
+                        <div className="requirement-item">
+
+                            {downloadLinks.mac.isImage ? (
+                                <img src={downloadLinks.mac.icon} alt="macOS" className="requirement-os-icon" />
+                            ) : (
+                                <div className="requirement-os-icon" style={{ fontSize: '2.5rem', lineHeight: '40px' }}>{downloadLinks.mac.icon}</div>
+                            )}
+                            <h4>macOS</h4>
+                            <ul>
+                                <li>macOS 12 Monterey or later</li>
+                                <li>Apple Silicon or Intel 64-bit CPU</li>
+                                <li>4 GB RAM minimum, 8 GB recommended</li>
+                                <li>500 MB free disk space</li>
                             </ul>
                         </div>
                         <div className="requirement-item">

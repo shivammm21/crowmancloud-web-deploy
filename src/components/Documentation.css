@@ -365,6 +365,25 @@
     text-align: center;
     gap: 0.75rem;
   }
+
+  /* Center headings and step titles on mobile */
+  .content-header {
+    text-align: center;
+  }
+  .content-header h1 {
+    text-align: center;
+  }
+  .content-body h2,
+  .content-body h3 {
+    text-align: center;
+  }
+  .step-number {
+    margin: 0 auto;
+  }
+  .step-content h4,
+  .step-content p {
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {

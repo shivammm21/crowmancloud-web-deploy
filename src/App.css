@@ -333,6 +333,22 @@
   opacity: 1;
 }
 
+/* Mobile quote rotator (hidden by default) */
+.mobile-quote-rotator {
+  display: none;
+}
+
+@keyframes quoteFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .btn {
   display: inline-block;
   padding: 0.9rem 2.2rem;
@@ -634,12 +650,14 @@
     border-radius: 25px;
   }
 
-  .landing-header.scrolled .header-content {
-    padding: 0 1.5rem;
+  .landing-header .header-actions .btn,
+  .landing-header .header-actions .nav-download {
+    display: none !important;
   }
 
   .logo-text {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
+    white-space: nowrap;
   }
 
   .landing-main {
@@ -820,11 +838,18 @@
   /* Show the hamburger on mobile */
   .mobile-menu-toggle {
     display: inline-flex;
+    width: 28px;
+    height: 28px;
   }
 
   /* Hide the full nav on mobile to keep header clean */
   .header-nav {
     display: none;
+  }
+
+  /* Enlarge hamburger lines for better visibility */
+  .mobile-menu-toggle span {
+    height: 3px;
   }
 
   /* Force-hide the navbar Download button on mobile with higher specificity and !important to avoid overrides */
@@ -833,13 +858,15 @@
     display: none !important;
   }
 
-  /* Utility: hide any element on mobile */
-  .hide-on-mobile {
-    display: none !important;
+  .logo-text {
+    font-size: 1.3rem;
+    white-space: nowrap;
   }
 
-  .logo-text {
-    font-size: 1.1rem;
+  /* Make brand logo bigger on mobile */
+  .header-logo img {
+    width: 36px;
+    height: 36px;
   }
 
   .landing-main {
@@ -1584,6 +1611,7 @@
   font-size: 1rem;
   margin-bottom: 1.5rem;
   line-height: 1.5;
+  text-align: left;
 }
 
 .demo-benefits {
@@ -1918,15 +1946,23 @@
 
   .footer-content {
     padding: 0 1.5rem 1.5rem 1.5rem;
+    max-width: 100%;
     gap: 1.5rem;
   }
 
   .footer-links {
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.5rem;
+    width: 100%;
+    align-items: start;
+    justify-items: stretch;
+    margin: 0 auto;
   }
 
   .footer-column {
-    min-width: 120px;
+    min-width: 0;
+    width: 100%;
   }
 
   .footer-bottom-content {
@@ -1940,17 +1976,24 @@
 @media (max-width: 480px) {
   .footer-content {
     padding: 0 1rem 1rem 1rem;
+    max-width: 100%;
   }
 
+  /* Two-column compact footer on small mobiles */
   .footer-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1rem;
+    width: 100%;
+    align-items: start;
+    justify-items: stretch;
+    margin: 0 auto;
   }
 
   .footer-column {
-    text-align: center;
-    min-width: auto;
+    text-align: left;
+    min-width: 0;
+    width: 100%;
   }
 
   .footer-bottom-content {
@@ -1966,20 +2009,43 @@
 @media (max-width: 900px) {
   .header-content {
     padding: 0 1.5rem;
-    gap: 1rem;
+    gap: 0.35rem 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-auto-rows: auto;
+    align-items: center;
   }
 
-  .header-nav {
-    display: none;
+  /* Show rotating quote under the header row on mobile */
+  .header-logo { grid-column: 1; grid-row: 1; }
+  .mobile-menu-toggle { grid-column: 3; grid-row: 1; justify-self: end; }
+
+  .mobile-quote-rotator {
+    display: block;
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    width: 100%;
+    margin-top: 0.2rem;
+    text-align: left;
   }
 
-  .mobile-menu-toggle {
-    display: flex;
+  .mobile-quote-rotator .quote-text {
+    display: inline-block;
+    color: #6b7280; /* tailwind gray-500 like */
+    font-size: 0.95rem;
+    line-height: 1.3;
+    animation: quoteFadeSlide 320ms ease;
   }
+
+  /* Ensure desktop nav hidden and hamburger shown on mobile */
+  .header-nav { display: none; }
+  .mobile-menu-toggle { display: flex; }
 
   .header-actions {
     gap: 0.75rem;
     align-items: center;
+    grid-column: 2;
+    grid-row: 1;
   }
 
   .btn-small {
@@ -1989,24 +2055,19 @@
 }
 
 @media (max-width: 600px) {
-  .header-content {
-    padding: 0 1rem;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+  .header-content { padding: 0 1rem; }
+  .mobile-quote-rotator { margin-top: 0.25rem; }
 
-  .header-logo {
-    gap: 0.5rem;
-    flex: 1;
-  }
+  .header-logo { gap: 0.5rem; }
 
   .header-logo img {
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
   }
 
   .logo-text {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
+    white-space: nowrap;
   }
 
   .mobile-menu-toggle {
@@ -2035,8 +2096,23 @@
   }
 
   .mobile-menu-toggle {
-    width: 20px;
-    height: 20px;
+    width: 26px;
+    height: 26px;
+  }
+
+  .mobile-menu-toggle span {
+    height: 3px;
+  }
+
+  /* Keep brand slightly smaller on very small screens but still prominent */
+  .header-logo img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+    white-space: nowrap;
   }
 
   .btn-small {
@@ -2164,11 +2240,10 @@ itional Mobile Optimizations */
 
 .mobile-menu {
   background: #fff;
-  width: 80vw;
-  max-width: 320px;
+  width: min(420px, 70vw);
   height: 100vh;
   box-shadow: -2px 0 16px rgba(0, 0, 0, 0.08);
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  padding: 3.5rem 1.5rem 1.5rem 1.5rem; /* extra top space for close button */
   display: flex;
   flex-direction: column;
   position: relative;
@@ -2202,6 +2277,19 @@ itional Mobile Optimizations */
   flex-direction: column;
   gap: 1.2rem;
   margin-top: 2.5rem;
+}
+
+/* Compact the Download button inside the mobile menu and add spacing */
+.mobile-menu .btn.btn-primary.btn-small {
+  padding: 0.7rem 1rem; /* reduce height */
+  font-size: 0.95rem;
+  border-radius: 999px;
+}
+
+.mobile-menu .download-wrap {
+  margin-top: 1.25rem; /* add more gap below close icon */
+  display: flex;
+  justify-content: center;
 }
 
 .mobile-nav-links a {
@@ -2292,6 +2380,7 @@ itional Mobile Optimizations */
   list-style: none;
   padding: 0;
   margin: 0 0 1.5rem 0;
+  text-align: left;
 }
 
 .tool-intro-info li {
@@ -2322,7 +2411,7 @@ itional Mobile Optimizations */
 
   .tool-intro-info {
     max-width: 100%;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .tool-intro-info h2,
