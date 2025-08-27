@@ -35,6 +35,7 @@ function App() {
     const p = window.location.pathname || '/';
     return p === '' ? '/' : p;
   });
+  const videoRef = useRef(null);
 
 
   useEffect(() => {
@@ -51,46 +52,39 @@ function App() {
     }
   };
 
-  // Set up video to play once and freeze at last frame with viewport detection
+  // Set up video to play once and freeze at last frame with viewport detection (home page only)
   useEffect(() => {
-    if (currentPage === 'home' && videoRef.current) {
-      const video = videoRef.current;
-      
-      // Add event listener for when video ends
+    if (currentPath === '/' && videoRef.current) {
+      const vidEl = videoRef.current;
+
       const handleVideoEnd = () => {
         // Keep video at last frame
-        video.currentTime = video.duration;
+        try { vidEl.currentTime = vidEl.duration; } catch {}
       };
-      
-      // Intersection Observer to detect when video enters viewport
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // Video is in viewport - reset and play
-              video.currentTime = 0;
-              video.play().catch(console.error);
+              try {
+                vidEl.currentTime = 0;
+                vidEl.play().catch(() => {});
+              } catch {}
             }
           });
         },
-        {
-          threshold: 0.5, // Trigger when 50% of video is visible
-          rootMargin: '0px'
-        }
+        { threshold: 0.5, rootMargin: '0px' }
       );
-      
-      // Start observing the video element
-      observer.observe(video);
-      
-      video.addEventListener('ended', handleVideoEnd);
-      
-      // Cleanup
+
+      observer.observe(vidEl);
+      vidEl.addEventListener('ended', handleVideoEnd);
+
       return () => {
         observer.disconnect();
-        video.removeEventListener('ended', handleVideoEnd);
+        vidEl.removeEventListener('ended', handleVideoEnd);
       };
     }
-  }, [currentPage]);
+  }, [currentPath]);
 
   // Render pricing page if selected
   if (currentPath === '/pricing') {
