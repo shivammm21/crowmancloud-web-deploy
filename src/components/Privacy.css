@@ -162,6 +162,37 @@
   margin-bottom: 1.5rem;
 }
 
+.collapse-toggle {
+  margin-left: 10;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.section-header:hover .collapse-toggle,
+.collapse-toggle:focus-visible {
+  opacity: 1;
+}
+
+.collapse-toggle:hover {
+  background: #f1f5f9;
+  color: #18181b;
+}
+
+.collapse-icon {
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.collapse-icon.is-open {
+  transform: rotate(180deg);
+}
+
 .section-number {
   display: flex;
   align-items: center;
@@ -186,6 +217,23 @@
 
 .section-content {
   margin-left: 3rem;
+}
+
+.collapsible {
+  overflow: hidden;
+  transition: grid-template-rows 0.25s ease, opacity 0.25s ease, margin 0.25s ease;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.collapsible.is-collapsed {
+  grid-template-rows: 0fr;
+  opacity: 0.95; /* keep slight visibility for smoother transition */
+  margin-top: 0.25rem;
+}
+
+.collapsible > * {
+  min-height: 0; /* needed for grid collapse trick */
 }
 
 .section-content p {
