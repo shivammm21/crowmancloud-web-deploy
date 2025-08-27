@@ -1,6 +1,6 @@
 import './App.css'
-import React, { useState } from 'react';
-import video from './assets/crowman.gif'
+import React, { useState, useEffect, useRef } from 'react';
+import video from './assets/crowman.mp4'
 import logo from './assets/logo.png'
 import landingVideo from './assets/demo-video.mp4'
 import macbookImage from './assets/demo/1.png'
@@ -29,11 +29,53 @@ import Features from './components/Features';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const videoRef = useRef(null);
 
   const navigateToPage = (page) => {
     console.log('Navigating to:', page);
     setCurrentPage(page);
   };
+
+  // Set up video to play once and freeze at last frame with viewport detection
+  useEffect(() => {
+    if (currentPage === 'home' && videoRef.current) {
+      const video = videoRef.current;
+      
+      // Add event listener for when video ends
+      const handleVideoEnd = () => {
+        // Keep video at last frame
+        video.currentTime = video.duration;
+      };
+      
+      // Intersection Observer to detect when video enters viewport
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Video is in viewport - reset and play
+              video.currentTime = 0;
+              video.play().catch(console.error);
+            }
+          });
+        },
+        {
+          threshold: 0.5, // Trigger when 50% of video is visible
+          rootMargin: '0px'
+        }
+      );
+      
+      // Start observing the video element
+      observer.observe(video);
+      
+      video.addEventListener('ended', handleVideoEnd);
+      
+      // Cleanup
+      return () => {
+        observer.disconnect();
+        video.removeEventListener('ended', handleVideoEnd);
+      };
+    }
+  }, [currentPage]);
 
   // Render pricing page if selected
   if (currentPage === 'pricing') {
@@ -223,7 +265,14 @@ function App() {
           </div>
         </section>
         <section className="landing-image">
-          <img src={video} alt="CrowmanCloud Logo" />
+          <video 
+            ref={videoRef}
+            src={video} 
+            alt="CrowmanCloud Logo"
+            muted
+            playsInline
+            style={{ width: '100%', height: 'auto' }}
+          />
         </section>
       </main>
       <div className="landing-gradient-section">
