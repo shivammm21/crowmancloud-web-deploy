@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Privacy.css';
 
 const Privacy = () => {
@@ -140,6 +140,17 @@ We are committed to addressing your privacy concerns promptly and transparently.
     }
   ];
 
+  // Track expanded/collapsed state; default to all expanded
+  const [expanded, setExpanded] = useState(() => new Set(sections.map(s => s.id)));
+
+  const toggleSection = (id) => {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
   return (
     <div className="privacy-page">
       <div className="privacy-container">
@@ -192,28 +203,52 @@ We are committed to addressing your privacy concerns promptly and transparently.
               <div className="section-header">
                 <span className="section-number">{index + 1}</span>
                 <h2>{section.title}</h2>
+                <button
+                  type="button"
+                  className="collapse-toggle"
+                  aria-label={expanded.has(section.id) ? `Collapse ${section.title}` : `Expand ${section.title}`}
+                  aria-controls={`${section.id}-content`}
+                  aria-expanded={expanded.has(section.id)}
+                  onClick={() => toggleSection(section.id)}
+                >
+                  <svg
+                    className={`collapse-icon ${expanded.has(section.id) ? 'is-open' : 'is-collapsed'}`}
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
               </div>
-              <div className="section-content">
-                {section.content.split('\n').map((paragraph, pIndex) => {
-                  if (paragraph.trim().startsWith('•')) {
-                    return (
-                      <ul key={pIndex} className="privacy-list">
-                        <li>{paragraph.trim().substring(1).trim()}</li>
-                      </ul>
-                    );
-                  } else if (paragraph.trim().startsWith('**') && paragraph.trim().endsWith('**')) {
-                    return (
-                      <h4 key={pIndex} className="subsection-title">
-                        {paragraph.trim().replace(/\*\*/g, '')}
-                      </h4>
-                    );
-                  } else if (paragraph.trim()) {
-                    return (
-                      <p key={pIndex}>{paragraph.trim()}</p>
-                    );
-                  }
-                  return null;
-                })}
+              <div
+                id={`${section.id}-content`}
+                className={`section-content collapsible ${expanded.has(section.id) ? 'is-open' : 'is-collapsed'}`}
+              >
+                <div className="collapsible-inner">
+                  {section.content.split('\n').map((paragraph, pIndex) => {
+                    if (paragraph.trim().startsWith('•')) {
+                      return (
+                        <ul key={pIndex} className="privacy-list">
+                          <li>{paragraph.trim().substring(1).trim()}</li>
+                        </ul>
+                      );
+                    } else if (paragraph.trim().startsWith('**') && paragraph.trim().endsWith('**')) {
+                      return (
+                        <h4 key={pIndex} className="subsection-title">
+                          {paragraph.trim().replace(/\*\*/g, '')}
+                        </h4>
+                      );
+                    } else if (paragraph.trim()) {
+                      return (
+                        <p key={pIndex}>{paragraph.trim()}</p>
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
               </div>
             </section>
           ))}
