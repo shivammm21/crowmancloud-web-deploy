@@ -18,7 +18,9 @@ const Footer = ({ onNavigate }) => {
             <ul>
               <li><a href="#" onClick={() => onNavigate('home')}>Features</a></li>
               <li><a href="#" onClick={() => onNavigate('pricing')}>Pricing</a></li>
+              {/*<li><a href="#" onClick={() => onNavigate('architecture')}>Architecture</a></li>*/}
               <li><a href="#" onClick={() => onNavigate('documentation')}>Documentation</a></li>
+              
               
             </ul>
           </div>

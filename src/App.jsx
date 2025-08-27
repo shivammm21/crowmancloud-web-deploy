@@ -1,9 +1,14 @@
 import './App.css'
 import React, { useState } from 'react';
+import video from './assets/crowman.gif'
 import logo from './assets/logo.png'
+import landingVideo from './assets/demo-video.mp4'
 import macbookImage from './assets/demo/1.png'
 import macbookImage2 from './assets/demo/2.png'
 import macbookImage3 from './assets/demo/3.png'
+import windowsIcon from './assets/win.png'
+import linuxIcon from './assets/linux.png'
+import macosIcon from './assets/macos.svg'
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -19,11 +24,14 @@ import Blog from './components/Blog';
 import Career from './components/Career';
 import ReleaseNotes from './components/ReleaseNotes';
 import Tutorial from './components/Tutorial';
+import Architecture from './components/Architecture';
+import Features from './components/Features';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
   const navigateToPage = (page) => {
+    console.log('Navigating to:', page);
     setCurrentPage(page);
   };
 
@@ -126,6 +134,17 @@ function App() {
     );
   }
 
+  // Render features page if selected
+  if (currentPage === 'features') {
+    return (
+      <div className="landing-root">
+        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Features onNavigate={navigateToPage} />
+        <Footer onNavigate={navigateToPage} />
+      </div>
+    );
+  }
+
   // Render blog page if selected
   if (currentPage === 'blog') {
     return (
@@ -170,6 +189,17 @@ function App() {
     );
   }
 
+  // Render architecture page if selected
+  if (currentPage === 'architecture') {
+    return (
+      <div className="landing-root">
+        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Architecture onNavigate={navigateToPage} />
+        <Footer onNavigate={navigateToPage} />
+      </div>
+    );
+  }
+
 
 
   return (
@@ -183,11 +213,17 @@ function App() {
           </p>
           <div className="landing-buttons">
             <button onClick={() => navigateToPage('download')} className="btn btn-primary">Download for Free</button>
-            <a href="#" className="btn btn-outline">Read the Docs</a>
+          </div>
+          <div className="platform-logos">
+            <div className="platform-icons">
+              <img src={windowsIcon} alt="Windows" className="platform-icon" />
+              <img src={linuxIcon} alt="Linux" className="platform-icon" />
+              <img src={macosIcon} alt="macOS" className="platform-icon" />
+            </div>
           </div>
         </section>
         <section className="landing-image">
-          <img src={logo} alt="CrowmanCloud Logo" />
+          <img src={video} alt="CrowmanCloud Logo" />
         </section>
       </main>
       <div className="landing-gradient-section">

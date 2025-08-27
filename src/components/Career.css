@@ -222,6 +222,8 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: left; /* ensure left alignment */
+  display: block;   /* ignore parent text-align center */
 }
 
 .contribution-steps li {
@@ -427,6 +429,11 @@
 
   .getting-started-text {
     text-align: center;
+  }
+
+  /* Keep the steps left-aligned on small screens */
+  .getting-started-text .contribution-steps {
+    text-align: left;
   }
 
   .stats-grid {

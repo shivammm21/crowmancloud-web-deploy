@@ -258,7 +258,16 @@
 
   .landing-image img {
     max-width: 100%;
-    min-width: 250px;
+    min-width: 350px;
+  }
+
+  .platform-logos {
+    align-items: center;
+    text-align: center;
+  }
+
+  .platform-icons {
+    justify-content: center;
   }
 }
 
@@ -291,6 +300,37 @@
 .landing-buttons {
   display: flex;
   gap: 1.2rem;
+}
+
+.platform-logos {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.platform-text {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.platform-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.platform-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.platform-icon:hover {
+  opacity: 1;
 }
 
 .btn {
@@ -338,8 +378,8 @@
 }
 
 .landing-image img {
-  max-width: 480px;
-  min-width: 320px;
+  max-width: 600px;
+  min-width: 400px;
   width: 100%;
   height: auto;
   display: block;
@@ -648,6 +688,12 @@
     min-width: 200px;
   }
 
+  /* Hide header Download button on <=900px so it's only in hamburger */
+  .landing-header .header-actions .btn,
+  .landing-header .header-actions .nav-download {
+    display: none !important;
+  }
+
   .landing-gradient-section {
     padding: 2.5rem 0;
   }
@@ -746,6 +792,50 @@
     padding: 0 1rem;
     max-width: 100%;
     overflow: hidden;
+  }
+
+  /* Keep logo on the left and actions on the right */
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Right side actions: compact Download + hamburger */
+  .header-actions {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Make the header Download button compact on mobile */
+  .header-actions .btn {
+    width: auto;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.95rem;
+    border-radius: 999px;
+  }
+
+  /* Show the hamburger on mobile */
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  /* Hide the full nav on mobile to keep header clean */
+  .header-nav {
+    display: none;
+  }
+
+  /* Force-hide the navbar Download button on mobile with higher specificity and !important to avoid overrides */
+  .landing-header .header-actions .btn.download-btn,
+  .landing-header .header-actions .nav-download {
+    display: none !important;
+  }
+
+  /* Utility: hide any element on mobile */
+  .hide-on-mobile {
+    display: none !important;
   }
 
   .logo-text {
