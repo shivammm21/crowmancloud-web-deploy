@@ -44,15 +44,19 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
           <img src={logo} alt="CrowmanCloud Logo" />
           <span className="logo-text"><b>Crowman</b><span className="inspector-light">Cloud</span></span>
         </div>
+        {/* Mobile hamburger placed next to the logo */}
+        <button className="mobile-menu-toggle" onClick={handleMenuToggle} aria-label="Open mobile menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <nav className="header-nav">
           <div className="nav-group">
             <span className="nav-title">Product</span>
             <div className="nav-dropdown">
-              <a href="#" onClick={() => navigateToPage('home')}>Features</a>
               <a href="#" onClick={() => navigateToPage('pricing')}>Pricing</a>
               {/*<a href="#" onClick={() => navigateToPage('architecture')}>Architecture</a> */}
               <a href="#" onClick={() => navigateToPage('documentation')}>Documentation</a>
-              <a href="#">API Reference</a>
             </div>
           </div>
           <div className="nav-group">
@@ -82,13 +86,7 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
           </div>
         </nav>
         <div className="header-actions">
-          <button className="mobile-menu-toggle" onClick={handleMenuToggle} aria-label="Open mobile menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-
-          <button onClick={() => navigateToPage('download')} className="btn btn-primary btn-small">Download</button>
+          <button onClick={() => navigateToPage('download')} className="btn btn-primary btn-small nav-download">Download</button>
         </div>
       </div>
       {/* Mobile Menu Overlay */}
@@ -96,12 +94,16 @@ const Header = ({ onNavigate, currentPage = 'home' }) => {
         <div className="mobile-menu-overlay" onClick={handleMenuClose}>
           <div className="mobile-menu" onClick={e => e.stopPropagation()}>
             <button className="mobile-menu-close" onClick={handleMenuClose} aria-label="Close mobile menu">&times;</button>
+            {/* Download button inside the mobile menu */}
+            <div style={{ padding: '0 1rem 1rem 1rem' }}>
+              <button onClick={() => navigateToPage('download')} className="btn btn-primary btn-small" style={{ width: '100%' }}>
+                Download
+              </button>
+            </div>
             <nav className="mobile-nav-links">
-              <a href="#" onClick={() => navigateToPage('home')}>Features</a>
               <a href="#" onClick={() => navigateToPage('pricing')}>Pricing</a>
               <a href="#" onClick={() => navigateToPage('architecture')}>Architecture</a>
               <a href="#" onClick={() => navigateToPage('documentation')}>Documentation</a>
-              <a href="#" onClick={handleMenuClose}>API Reference</a>
               <a href="#" onClick={() => navigateToPage('about')}>About</a>
               <a href="#" onClick={() => navigateToPage('career')}>Careers</a>
               <a href="#" onClick={() => navigateToPage('blog')}>Blog</a>
