@@ -1,6 +1,8 @@
 import './App.css'
+
 import React, { useState, useEffect, useRef } from 'react';
 import video from './assets/crowman.mp4'
+
 import logo from './assets/logo.png'
 import landingVideo from './assets/demo-video.mp4'
 import macbookImage from './assets/demo/1.png'
@@ -28,12 +30,25 @@ import Architecture from './components/Architecture';
 import Features from './components/Features';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const videoRef = useRef(null);
 
-  const navigateToPage = (page) => {
-    console.log('Navigating to:', page);
-    setCurrentPage(page);
+  const [currentPath, setCurrentPath] = useState(() => {
+    const p = window.location.pathname || '/';
+    return p === '' ? '/' : p;
+  });
+
+
+  useEffect(() => {
+    const onPopState = () => setCurrentPath(window.location.pathname || '/');
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  const navigateToPage = (pageOrPath) => {
+    const path = pageOrPath?.startsWith('/') ? pageOrPath : `/${pageOrPath || ''}`;
+    if (window.location.pathname !== path) {
+      window.history.pushState({}, '', path);
+      setCurrentPath(path);
+    }
   };
 
   // Set up video to play once and freeze at last frame with viewport detection
@@ -78,10 +93,10 @@ function App() {
   }, [currentPage]);
 
   // Render pricing page if selected
-  if (currentPage === 'pricing') {
+  if (currentPath === '/pricing') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Pricing onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -89,10 +104,10 @@ function App() {
   }
 
   // Render download page if selected
-  if (currentPage === 'download') {
+  if (currentPath === '/download') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Download onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -100,10 +115,10 @@ function App() {
   }
 
   // Render contact page if selected
-  if (currentPage === 'contact') {
+  if (currentPath === '/contact') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Contact />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -111,10 +126,10 @@ function App() {
   }
 
   // Render about page if selected
-  if (currentPage === 'about') {
+  if (currentPath === '/about') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <About onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -122,10 +137,10 @@ function App() {
   }
 
   // Render help center page if selected
-  if (currentPage === 'help') {
+  if (currentPath === '/help') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <HelpCenter onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -133,10 +148,10 @@ function App() {
   }
 
   // Render privacy policy page if selected
-  if (currentPage === 'privacy') {
+  if (currentPath === '/privacy') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Privacy />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -144,10 +159,10 @@ function App() {
   }
 
   // Render terms of service page if selected
-  if (currentPage === 'terms') {
+  if (currentPath === '/terms') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Terms />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -155,10 +170,10 @@ function App() {
   }
 
   // Render security page if selected
-  if (currentPage === 'security') {
+  if (currentPath === '/security') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Security onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -166,10 +181,10 @@ function App() {
   }
 
   // Render documentation page if selected
-  if (currentPage === 'documentation') {
+  if (currentPath === '/documentation') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Documentation onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -177,10 +192,10 @@ function App() {
   }
 
   // Render features page if selected
-  if (currentPage === 'features') {
+  if (currentPath === '/features') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Features onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -188,10 +203,10 @@ function App() {
   }
 
   // Render blog page if selected
-  if (currentPage === 'blog') {
+  if (currentPath === '/blog') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Blog onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -199,10 +214,10 @@ function App() {
   }
 
   // Render career page if selected
-  if (currentPage === 'career') {
+  if (currentPath === '/career') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Career onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -210,10 +225,10 @@ function App() {
   }
 
   // Render release notes page if selected
-  if (currentPage === 'release-notes') {
+  if (currentPath === '/release-notes') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <ReleaseNotes onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -221,10 +236,10 @@ function App() {
   }
 
   // Render tutorial page if selected
-  if (currentPage === 'tutorial') {
+  if (currentPath === '/tutorial') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Tutorial onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -232,10 +247,10 @@ function App() {
   }
 
   // Render architecture page if selected
-  if (currentPage === 'architecture') {
+  if (currentPath === '/architecture') {
     return (
       <div className="landing-root">
-        <Header onNavigate={navigateToPage} currentPage={currentPage} />
+        <Header onNavigate={navigateToPage} currentPage={currentPath} />
         <Architecture onNavigate={navigateToPage} />
         <Footer onNavigate={navigateToPage} />
       </div>
@@ -246,7 +261,7 @@ function App() {
 
   return (
     <div className="landing-root">
-      <Header onNavigate={navigateToPage} currentPage={currentPage} />
+      <Header onNavigate={navigateToPage} currentPage={currentPath} />
       <main className="landing-main">
         <section className="landing-content">
           <h1>Deploy to the Cloud with Confidence</h1>
@@ -254,7 +269,7 @@ function App() {
             CrowmanCloud is the essential pre-deployment platform for developers. Analyze your source code, automate infrastructure setup, get intelligent cloud recommendations, and estimate costs—all from a secure, local-first desktop application.
           </p>
           <div className="landing-buttons">
-            <button onClick={() => navigateToPage('download')} className="btn btn-primary">Download for Free</button>
+            <button onClick={() => navigateToPage('/download')} className="btn btn-primary">Download for Free</button>
           </div>
           <div className="platform-logos">
             <div className="platform-icons">
