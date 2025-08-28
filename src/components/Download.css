@@ -97,6 +97,16 @@
     gap: 2rem;
     margin-bottom: 2rem;
   }
+
+  /* Tablet and medium screen adjustments */
+  @media (max-width: 900px) {
+    .download-options {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 500px;
+      margin: 0 auto 2rem auto;
+    }
+  }
   
   .download-option {
     background: #f9fafb;
@@ -552,6 +562,16 @@
       grid-template-columns: 1fr;
       gap: 2rem;
     }
+
+    /* Fix download options grid for mobile */
+    .download-options {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .download-option {
+      padding: 1.5rem;
+    }
   
     .download-buttons {
       flex-direction: column;
@@ -597,6 +617,28 @@
       padding: 0.875rem 1.5rem;
       font-size: 0.95rem;
     }
+
+    /* Ensure download options are properly spaced on small screens */
+    .download-options {
+      gap: 1rem;
+    }
+
+    .download-option {
+      padding: 1.25rem;
+    }
+
+    .os-info h4 {
+      font-size: 1.1rem;
+    }
+
+    .os-description {
+      font-size: 0.85rem;
+    }
+
+    .os-icon-large {
+      width: 50px;
+      height: 50px;
+    }
   
     .feature-item,
     .requirement-item,
@@ -622,5 +664,27 @@
     .download-btn {
       padding: 0.75rem 1rem;
       font-size: 0.9rem;
+    }
+
+    .download-option {
+      padding: 1rem;
+    }
+
+    .os-info h4 {
+      font-size: 1rem;
+    }
+
+    .os-description {
+      font-size: 0.8rem;
+    }
+
+    .os-icon-large {
+      width: 45px;
+      height: 45px;
+    }
+
+    .badge-soon {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.4rem;
     }
   }

@@ -127,7 +127,6 @@ const Pricing = ({ onNavigate }) => {
         <p>Join thousands of developers who trust CrowmanCloud for their deployment needs.</p>
         <div className="cta-buttons">
           <button className="btn-primary" onClick={() => onNavigate('download')}>Download Now</button>
-          <button className="btn-secondary">View Documentation</button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import './Privacy.css';
 
 const Privacy = () => {
-  const lastUpdated = "January 30, 2025";
+  const lastUpdated = "July 21, 2025";
 
   const sections = [
     {

@@ -170,12 +170,14 @@
 .plan-features {
   flex: 1;
   margin-bottom: 2rem;
+  text-align: left; /* Ensure the entire features section is left-aligned */
 }
 
 .plan-features ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  text-align: left; /* Ensure left alignment */
 }
 
 .plan-features li {
@@ -185,14 +187,20 @@
   margin-bottom: 12px;
   font-size: 0.95rem;
   line-height: 1.5;
+  text-align: left; /* Explicitly set left alignment */
+  justify-content: flex-start; /* Ensure content starts from left */
 }
 
 .feature-included {
   color: #374151;
+  text-align: left;
+  flex: 1; /* Take up remaining space */
 }
 
 .feature-limitation {
   color: #f59e0b;
+  text-align: left;
+  flex: 1; /* Take up remaining space */
 }
 
 .checkmark {
