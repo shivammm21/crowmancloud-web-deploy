@@ -58,8 +58,14 @@ function App() {
       const vidEl = videoRef.current;
 
       const handleVideoEnd = () => {
-        // Keep video at last frame
+        // Keep video at last frame and start subtle float animation
         try { vidEl.currentTime = vidEl.duration; } catch {}
+        vidEl.classList.add('float-y');
+      };
+
+      const handleVideoPlay = () => {
+        // Remove float animation while video is playing
+        vidEl.classList.remove('float-y');
       };
 
       const observer = new IntersectionObserver(
@@ -68,6 +74,7 @@ function App() {
             if (entry.isIntersecting) {
               try {
                 vidEl.currentTime = 0;
+                vidEl.classList.remove('float-y');
                 vidEl.play().catch(() => {});
               } catch {}
             }
@@ -78,10 +85,12 @@ function App() {
 
       observer.observe(vidEl);
       vidEl.addEventListener('ended', handleVideoEnd);
+      vidEl.addEventListener('play', handleVideoPlay);
 
       return () => {
         observer.disconnect();
         vidEl.removeEventListener('ended', handleVideoEnd);
+        vidEl.removeEventListener('play', handleVideoPlay);
       };
     }
   }, [currentPath]);
@@ -280,6 +289,7 @@ function App() {
             alt="CrowmanCloud Logo"
             muted
             playsInline
+            className="crowman-video"
             style={{ width: '100%', height: 'auto' }}
           />
         </section>
