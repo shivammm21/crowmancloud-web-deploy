@@ -13,5 +13,5 @@
   NODE_VERSION = "20"
 
 # Optional: force Node 20 if needed by your project
-[[context.production.environment]]
+[context.production.environment]
   NODE_VERSION = "20"
