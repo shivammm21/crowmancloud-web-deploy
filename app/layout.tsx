@@ -10,7 +10,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'crowmancloud — AI-Powered Cloud Developer Experience',
+    default: 'crowmancloud — Cloud Developer Experience',
     template: '%s | crowmancloud',
   },
   description:
