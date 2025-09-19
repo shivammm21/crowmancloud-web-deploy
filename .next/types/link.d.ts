@@ -30,8 +30,8 @@ declare namespace __next_route_internal_types__ {
 
   type StaticRoutes = 
     | `/about`
-    | `/community`
     | `/contact`
+    | `/community`
     | `/crowmantool`
     | `/docs`
     | `/features`
@@ -39,11 +39,11 @@ declare namespace __next_route_internal_types__ {
     | `/pricing`
     | `/privacy`
     | `/profile`
-    | `/signin`
     | `/showcase`
+    | `/signin`
     | `/signup`
-    | `/terms`
     | `/status`
+    | `/terms`
     | `/updates`
     | `/faq`
   type DynamicRoutes<T extends string = string> = never
