@@ -1,29 +1,20 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Custom ignored folder
-.cloude/
+# Testing
+/coverage
 
-# Dependency directories
-node_modules
-dist
-dist-ssr
-*.local
+# Next.js
+/.next/
+/out/
+/next-env.d.ts
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Production
+/build
+
+# Misc
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
+*.log
+.env*
