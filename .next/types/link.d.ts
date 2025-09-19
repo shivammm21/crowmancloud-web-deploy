@@ -39,11 +39,11 @@ declare namespace __next_route_internal_types__ {
     | `/pricing`
     | `/privacy`
     | `/profile`
-    | `/showcase`
     | `/signin`
-    | `/status`
+    | `/showcase`
     | `/signup`
     | `/terms`
+    | `/status`
     | `/updates`
     | `/faq`
   type DynamicRoutes<T extends string = string> = never
