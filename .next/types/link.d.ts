@@ -34,10 +34,10 @@ declare namespace __next_route_internal_types__ {
     | `/contact`
     | `/crowmantool`
     | `/docs`
-    | `/`
     | `/features`
-    | `/privacy`
+    | `/`
     | `/pricing`
+    | `/privacy`
     | `/profile`
     | `/showcase`
     | `/signin`

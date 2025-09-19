@@ -19,7 +19,7 @@ export default function HomePage() {
           eyebrow="Code with confidence"
           title="From idea to production faster"
           description="crowmancloud pairs intuitive UI with powerful AI assistance. Generate scaffolds, optimize performance, and ship reliably."
-          image="/application.png"
+          image="/starting-app.png"
           reversed={false}
         />
         <ShowcaseSection

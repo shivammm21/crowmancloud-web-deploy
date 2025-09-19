@@ -38,7 +38,7 @@ export default function ShowcasePage() {
             eyebrow="Code with confidence"
             title="From idea to production faster"
             description="CrowmanCloud pairs intuitive UI with powerful AI assistance. Generate scaffolds, optimize performance, and ship reliably."
-            image="/hero-preview.svg"
+            image="/starting-app.png"
             reversed={false}
           />
 
@@ -47,7 +47,7 @@ export default function ShowcasePage() {
             eyebrow="Designed for the cloud"
             title="Scale effortlessly"
             description="Provision, monitor, and optimize with animated clarity. Built-in best practices keep your stack healthy."
-            image="/hero-preview.svg"
+            image="/application.png"
             reversed
           />
 
@@ -90,14 +90,14 @@ export default function ShowcasePage() {
             eyebrow="Automation"
             title="CI/CD and container setup in minutes"
             description="CrowmanCloud generates optimized Dockerfiles and CI pipelines tailored to your framework and package manager."
-            image="/hero-preview.svg"
+            image="/application.png"
           />
           <ShowcaseSection
             id="showcase-costs"
             eyebrow="Cost Estimation"
             title="See the bill before you deploy"
             description="Preview monthly spend by service and region. Quickly experiment with instance sizes to hit your budget."
-            image="/hero-preview.svg"
+            image="/application.png"
             reversed
           />
         </div>

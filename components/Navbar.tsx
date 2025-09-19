@@ -3,9 +3,9 @@ import Link from 'next/link';
 import type { Route } from 'next';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Menu, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { User } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { User, Sparkles, LayoutDashboard, BookOpen, Info, Users, Tag, HelpCircle, Mail } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function Navbar() {
@@ -73,39 +73,120 @@ export default function Navbar() {
               )}
             </div>
           )}
-          <button aria-label="Open menu" className="md:hidden inline-flex rounded-md p-2 hover:bg-white/10" onClick={() => setOpen((v)=>!v)}>
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          {/* Animated hamburger */}
+          <button
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/5 hover:bg-white/10 transition"
+            onClick={() => setOpen((v)=>!v)}
+          >
+            <span className="sr-only">Toggle navigation</span>
+            <span className="relative block h-4 w-5">
+              <span
+                className={`absolute left-0 top-0 h-0.5 w-5 bg-white transition-transform duration-300 ${open ? 'translate-y-1.5 rotate-45' : ''}`}
+              />
+              <span
+                className={`absolute left-0 top-1.5 h-0.5 w-5 bg-white transition-opacity duration-200 ${open ? 'opacity-0' : 'opacity-100'}`}
+              />
+              <span
+                className={`absolute left-0 top-3 h-0.5 w-5 bg-white transition-transform duration-300 ${open ? '-translate-y-1.5 -rotate-45' : ''}`}
+              />
+            </span>
           </button>
         </div>
       </div>
       {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden border-t border-white/10 bg-neutral-950/95 backdrop-blur">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 grid gap-3 text-sm">
-            <Link onClick={()=>setOpen(false)} href={"/features" as Route} className="hover:text-white">Features</Link>
-            <Link onClick={()=>setOpen(false)} href={"/showcase" as Route} className="hover:text-white">Showcase</Link>
-            <Link onClick={()=>setOpen(false)} href={"/about" as Route} className="hover:text-white">About</Link>
-            <Link onClick={()=>setOpen(false)} href={"/docs" as Route} className="hover:text-white">Docs</Link>
-            <Link onClick={()=>setOpen(false)} href={"/community" as const} className="hover:text-white">Community</Link>
-            <Link onClick={()=>setOpen(false)} href={"/pricing" as const} className="hover:text-white">Pricing</Link>
-            <Link onClick={()=>setOpen(false)} href={"/faq" as const} className="hover:text-white">FAQ</Link>
-            <Link onClick={()=>setOpen(false)} href={"/contact" as Route} className="hover:text-white">Contact</Link>
-            {!isAuthenticated ? (
-              <div className="pt-2 flex items-center gap-2">
-                <Link onClick={()=>setOpen(false)} href={"/signin" as Route} className="inline-flex rounded-md px-3 py-1.5 text-sm bg-white/10 hover:bg-white/20 transition">Sign in</Link>
-                <Link onClick={()=>setOpen(false)} href={"/signup" as Route} className="inline-flex rounded-md px-3 py-1.5 text-sm bg-brand-500 hover:bg-brand-400 text-white transition">Get started</Link>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+            className="md:hidden border-t border-white/10 bg-neutral-950/95 backdrop-blur relative overflow-hidden"
+          >
+            {/* subtle glow */}
+            <div className="pointer-events-none absolute -top-20 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-brand-500/20 blur-3xl" />
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5">
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <Link onClick={()=>setOpen(false)} href={"/features" as Route} className="group rounded-lg border border-white/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-brand-300" />
+                    <span className="font-medium">Features</span>
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-300/80">AI assistance, scaffolds</p>
+                </Link>
+                <Link onClick={()=>setOpen(false)} href={"/showcase" as Route} className="group rounded-lg border border-white/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                  <div className="flex items-center gap-2">
+                    <LayoutDashboard className="h-4 w-4 text-brand-300" />
+                    <span className="font-medium">Showcase</span>
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-300/80">Real product shots</p>
+                </Link>
+                <Link onClick={()=>setOpen(false)} href={"/docs" as Route} className="group rounded-lg border border-white/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="h-4 w-4 text-brand-300" />
+                    <span className="font-medium">Docs</span>
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-300/80">Guides & API</p>
+                </Link>
+                <Link onClick={()=>setOpen(false)} href={"/about" as Route} className="group rounded-lg border border-white/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                  <div className="flex items-center gap-2">
+                    <Info className="h-4 w-4 text-brand-300" />
+                    <span className="font-medium">About</span>
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-300/80">Mission & team</p>
+                </Link>
+                <Link onClick={()=>setOpen(false)} href={"/community" as const} className="group rounded-lg border border-white/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                  <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4 text-brand-300" />
+                    <span className="font-medium">Community</span>
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-300/80">Join the discussion</p>
+                </Link>
+                <Link onClick={()=>setOpen(false)} href={"/pricing" as const} className="group rounded-lg border border-white/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                  <div className="flex items-center gap-2">
+                    <Tag className="h-4 w-4 text-brand-300" />
+                    <span className="font-medium">Pricing</span>
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-300/80">Simple & transparent</p>
+                </Link>
+                <Link onClick={()=>setOpen(false)} href={"/faq" as const} className="group rounded-lg border border-white/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                  <div className="flex items-center gap-2">
+                    <HelpCircle className="h-4 w-4 text-brand-300" />
+                    <span className="font-medium">FAQ</span>
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-300/80">Common questions</p>
+                </Link>
+                <Link onClick={()=>setOpen(false)} href={"/contact" as Route} className="group rounded-lg border border-white/10 bg-white/5 p-3 hover:bg-white/10 transition">
+                  <div className="flex items-center gap-2">
+                    <Mail className="h-4 w-4 text-brand-300" />
+                    <span className="font-medium">Contact</span>
+                  </div>
+                  <p className="mt-1 text-xs text-neutral-300/80">Get in touch</p>
+                </Link>
               </div>
-            ) : (
-              <div className="pt-2 flex items-center">
-                <button onClick={()=>setOpen(false)} aria-label="Profile" className="inline-flex items-center justify-center rounded-full h-8 w-8 bg-white/10 hover:bg-white/20 mr-2">
-                  {avatarText ? <span className="text-xs font-medium">{avatarText}</span> : <User className="h-4 w-4" />}
-                </button>
-                <button onClick={() => { setConfirmOpen(true); setOpen(false); }} className="inline-flex rounded-md px-3 py-1.5 text-sm bg-white/10 hover:bg-white/20 text-red-400 hover:text-red-300 transition">Sign out</button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+
+              {/* Auth actions */}
+              {!isAuthenticated ? (
+                <div className="mt-4 flex items-center gap-2">
+                  <Link onClick={()=>setOpen(false)} href={"/signin" as Route} className="inline-flex rounded-md px-3 py-1.5 text-sm bg-white/10 hover:bg-white/20 transition">Sign in</Link>
+                  <Link onClick={()=>setOpen(false)} href={"/signup" as Route} className="inline-flex rounded-md px-3 py-1.5 text-sm bg-brand-500 hover:bg-brand-400 text-white transition">Get started</Link>
+                </div>
+              ) : (
+                <div className="mt-4 flex items-center">
+                  <button onClick={()=>setOpen(false)} aria-label="Profile" className="inline-flex items-center justify-center rounded-full h-8 w-8 bg-white/10 hover:bg-white/20 mr-2">
+                    {avatarText ? <span className="text-xs font-medium">{avatarText}</span> : <User className="h-4 w-4" />}
+                  </button>
+                  <button onClick={() => { setConfirmOpen(true); setOpen(false); }} className="inline-flex rounded-md px-3 py-1.5 text-sm bg-white/10 hover:bg-white/20 text-red-400 hover:text-red-300 transition">Sign out</button>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* Logout confirm modal (portal to body to avoid header stacking/positioning) */}
       {confirmOpen && canPortal && createPortal(
         <div className="fixed inset-0 z-[80]">
