@@ -10,8 +10,8 @@
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
   # Ensure Node version compatibility if your Netlify site uses a different default
-  # NODE_VERSION = "20"
+  NODE_VERSION = "20"
 
 # Optional: force Node 20 if needed by your project
-#[[context.production.environment]]
-#  NODE_VERSION = "20"
+[[context.production.environment]]
+  NODE_VERSION = "20"
