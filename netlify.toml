@@ -1,0 +1,17 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Use the official Netlify Next.js Runtime for SSR/ISR support
+[[plugins]]
+  package = "@netlify/next"
+
+# Optional: cache Next.js build artifacts for faster builds
+[build.environment]
+  NEXT_TELEMETRY_DISABLED = "1"
+  # Ensure Node version compatibility if your Netlify site uses a different default
+  # NODE_VERSION = "20"
+
+# Optional: force Node 20 if needed by your project
+#[[context.production.environment]]
+#  NODE_VERSION = "20"
