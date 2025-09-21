@@ -50,18 +50,18 @@ export default function Hero() {
             <Link href="#" className="rounded-md bg-brand-500 hover:bg-brand-400 px-5 py-3 font-medium text-white transition">Get started</Link>
             <Link href="#features" className="rounded-md bg-white/10 hover:bg-white/20 px-5 py-3 font-medium transition">Explore features</Link>
           </motion.div>
+        </div>
 
-          <motion.div
+        <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.25 }}
-            className="relative mt-14 rounded-xl border border-white/10 bg-white/5 p-3 shadow-2xl shadow-black/30 overflow-visible"
+            className="relative mt-14 rounded-xl border border-white/10 bg-white/5 p-3 shadow-2xl shadow-black/30 overflow-visible mx-auto max-w-4xl sm:max-w-5xl"
           >
             <ShowcaseGlow />
-            <img src="/application.png" alt="Application preview" className="w-full rounded-lg relative z-10" />
+            <img src="/dash-pro.png" alt="Application preview" className="w-full rounded-lg relative z-10" />
           </motion.div>
-        </div>
       </div>
     </section>
   );

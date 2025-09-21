@@ -34,12 +34,21 @@ export default function ShowcasePage() {
           </div>
 
           <ShowcaseSection
-            id="showcase-code"
-            eyebrow="Code with confidence"
-            title="From idea to production faster"
-            description="CrowmanCloud pairs intuitive UI with powerful AI assistance. Generate scaffolds, optimize performance, and ship reliably."
-            image="/starting-app.png"
+            id="showcase-pro-dashboard"
+            eyebrow="Pro tool"
+            title="CrowmanCloud Pro — Dashboard"
+            description="Stay on top of your project with a live Pro dashboard: readiness scores, security advisories, dependency health, and one‑click fixes. Ship confidently with actionable insights at a glance."
+            image="/dash-pro.png"
             reversed={false}
+          />
+
+          <ShowcaseSection
+            id="showcase-pro-starter"
+            eyebrow="Pro tool"
+            title="Smart project setup"
+            description="Kickstart new services with opinionated, production‑ready scaffolds. Pro generates optimized configs, sensible defaults, and wiring so you start strong and move faster."
+            image="/starting-pro1.png"
+            reversed
           />
 
           <ShowcaseSection
@@ -48,7 +57,7 @@ export default function ShowcasePage() {
             title="Scale effortlessly"
             description="Provision, monitor, and optimize with animated clarity. Built-in best practices keep your stack healthy."
             image="/application.png"
-            reversed
+            reversed={false}
           />
 
           {/* Detailed highlights */}
