@@ -1,13 +1,26 @@
 "use client";
 import { motion } from 'framer-motion';
-import AnimatedBG from './AnimatedBG';
 import ShowcaseGlow from './ShowcaseGlow';
 import Link from 'next/link';
+import { Squares } from '@/components/ui/squares-background';
 
 export default function Hero() {
   return (
     <section className="relative isolate pt-16 sm:pt-24 pb-16 sm:pb-24 overflow-hidden">
-      <AnimatedBG />
+      {/* Animated squares background */}
+      <div className="absolute inset-0 -z-20">
+        <Squares direction="diagonal" speed={0.4} squareSize={40} borderColor="#333" hoverFillColor="#222" />
+      </div>
+      {/* Yellow glow overlay */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div
+          className="absolute left-1/2 top-20 -translate-x-1/2 h-[500px] w-[500px] rounded-full blur-3xl opacity-30"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(250,204,21,0.7), rgba(250,204,21,0) 70%)",
+          }}
+        />
+      </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         <div className="mx-auto max-w-3xl text-center">
           <motion.div

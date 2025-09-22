@@ -30,13 +30,13 @@ declare namespace __next_route_internal_types__ {
 
   type StaticRoutes = 
     | `/`
-    | `/about`
     | `/community`
-    | `/contact`
+    | `/about`
     | `/crowmantool`
     | `/docs`
-    | `/features`
+    | `/contact`
     | `/faq`
+    | `/features`
     | `/pricing`
     | `/privacy`
     | `/profile`
