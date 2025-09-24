@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Github, Mail, ShieldCheck } from "lucide-react";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { GoogleLogin } from '@react-oauth/google';
 
 export default function SignInPage() {
   const [showEmail, setShowEmail] = useState(false);
@@ -16,6 +17,53 @@ export default function SignInPage() {
   const [error, setError] = useState<string | null>(null);
   const isSubmittingRef = useRef(false);
 
+  const handleGoogleSuccess = async (credentialResponse: any) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch('https://crowmancloud-backend-starter.onrender.com/api/auth/google', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          credential: credentialResponse.credential
+        }),
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'Google sign in failed';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.detail || errorData.message || errorMessage;
+        } catch (e) {
+          const text = await response.text();
+          errorMessage = text || errorMessage;
+        }
+        throw new Error(errorMessage);
+      }
+
+      const data = await response.json();
+      
+      // Store tokens if provided in response
+      if (data.access_token) {
+        localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('token_type', data.token_type || 'bearer');
+      }
+      
+      // Redirect to vulnerability page
+      router.push("/vulnerability");
+    } catch (err: any) {
+      setError(err.message || 'Google sign in failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleError = () => {
+    setError('Google sign in was cancelled or failed');
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isSubmittingRef.current || loading) return; // guard against duplicate submits
@@ -23,7 +71,7 @@ export default function SignInPage() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/auth/login", {
+      const res = await fetch("https://crowmancloud-backend-starter.onrender.com/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -58,7 +106,7 @@ export default function SignInPage() {
           localStorage.setItem("access_token", data.access_token);
           localStorage.setItem("token_type", data.token_type || "bearer");
         }
-        router.push("/crowmantool");
+        router.push("/vulnerability");
       } else {
         throw new Error("No access token returned");
       }
@@ -92,23 +140,18 @@ export default function SignInPage() {
           </div>
 
           <div className="mt-8 rounded-xl border border-white/10 bg-white/5 p-6 space-y-3">
-            {/* GitHub */}
-            <a
-              href="#" // replace with /api/auth/signin/github when wiring NextAuth
-              className="flex items-center justify-center gap-2 rounded-md px-4 py-2 bg-white/10 hover:bg-white/20 transition"
-            >
-              <Github className="h-4 w-4" />
-              <span>Continue with GitHub</span>
-            </a>
-
             {/* Google */}
-            <a
-              href="#" // replace with /api/auth/signin/google when wiring NextAuth
-              className="flex items-center justify-center gap-2 rounded-md px-4 py-2 bg-white/10 hover:bg-white/20 transition"
-            >
-              <img src="/logos/tech/google.svg" alt="Google" className="h-4 w-4" />
-              <span>Continue with Google</span>
-            </a>
+            <div className="flex justify-center">
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={handleGoogleError}
+                theme="filled_black"
+                size="large"
+                text="signin_with"
+                shape="rectangular"
+                width="300"
+              />
+            </div>
 
             {/* Email */}
             {!showEmail ? (

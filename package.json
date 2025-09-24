@@ -12,9 +12,12 @@
     "node": "20.18.x"
   },
   "dependencies": {
+    "@google-cloud/local-auth": "^3.0.1",
+    "@react-oauth/google": "^0.12.2",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "framer-motion": "^10.18.0",
+    "google-auth-library": "^10.3.0",
     "lucide-react": "^0.441.0",
     "next": "^14.2.5",
     "postcss": "^8.4.41",

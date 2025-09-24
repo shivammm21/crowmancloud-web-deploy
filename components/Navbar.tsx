@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Sparkles, LayoutDashboard, BookOpen, Info, Users, Tag, HelpCircle, Mail } from 'lucide-react';
+import { User, Sparkles, LayoutDashboard, BookOpen, Info, Users, Tag, HelpCircle, Mail, Shield } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function Navbar() {
@@ -96,9 +96,21 @@ export default function Navbar() {
                   {avatarText ? <span className="text-xs font-medium">{avatarText}</span> : <User className="h-4 w-4" />}
                 </button>
                 {profileOpen && (
-                  <div className="absolute right-0 mt-2 w-40 rounded-md border border-white/10 bg-neutral-900 shadow-lg py-1 text-sm">
-                    <Link href={"/profile" as Route} className="block w-full text-left px-3 py-2 hover:bg-white/10">Profile</Link>
-                    <button onClick={() => { setProfileOpen(false); setConfirmOpen(true); }} className="block w-full text-left px-3 py-2 hover:bg-white/10 text-red-400 hover:text-red-300">Logout</button>
+                  <div className="absolute right-0 mt-2 w-48 rounded-md border border-white/10 bg-neutral-900 shadow-lg py-1 text-sm">
+                    <Link href={"/profile" as Route} className="flex items-center gap-2 w-full text-left px-3 py-2 hover:bg-white/10">
+                      <User className="h-4 w-4" />
+                      Profile
+                    </Link>
+                    <Link href={"/vulnerability" as Route} className="flex items-center gap-2 w-full text-left px-3 py-2 hover:bg-white/10 text-green-400 hover:text-green-300">
+                      <Shield className="h-4 w-4" />
+                      Check Vulnerability
+                    </Link>
+                    <button onClick={() => { setProfileOpen(false); setConfirmOpen(true); }} className="flex items-center gap-2 w-full text-left px-3 py-2 hover:bg-white/10 text-red-400 hover:text-red-300">
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                      </svg>
+                      Logout
+                    </button>
                   </div>
                 )}
               </div>
@@ -231,7 +243,7 @@ export default function Navbar() {
             <p className="mt-1 text-sm text-neutral-300">Are you sure you want to log out?</p>
             <div className="mt-4 flex justify-end gap-2">
               <button onClick={() => setConfirmOpen(false)} className="rounded-md px-3 py-1.5 text-sm bg-white/10 hover:bg-white/20">Cancel</button>
-              <button onClick={() => { setConfirmOpen(false); signOut(); }} className="rounded-md px-3 py-1.5 text-sm bg-red-500 hover:bg-red-400 text-white">Logout</button>
+              <button onClick={() => { setConfirmOpen(false); signOut(); window.location.reload(); }} className="rounded-md px-3 py-1.5 text-sm bg-red-500 hover:bg-red-400 text-white">Logout</button>
             </div>
           </div>
         </div>,
