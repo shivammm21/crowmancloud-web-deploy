@@ -3,7 +3,6 @@ import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import LogoMarquee from '@/components/LogoMarquee';
 import ShowcaseSection from '@/components/ShowcaseSection';
-import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 
 export default function HomePage() {
@@ -18,8 +17,15 @@ export default function HomePage() {
           id="showcase-code"
           eyebrow="Code with confidence"
           title="From idea to production faster"
-          description="crowmancloud pairs intuitive UI with powerful AI assistance. Generate scaffolds, optimize performance, and ship reliably."
+          description="Analyze your repo, auto‑provision cloud essentials, and get cost‑aware deployment guidance — all from a secure, local‑first app."
           image="/starting-app.png"
+          details={[
+            'Static analysis for frameworks, services, and dependencies',
+            'Infra blueprints for AWS/GCP/Azure with best‑practice defaults',
+            'Environment & secret suggestions without committing .env',
+            'Cost estimates by region/SKU with tunable sizes',
+            'Local‑first — your code stays on your machine'
+          ]}
           reversed={false}
         />
         <ShowcaseSection
@@ -30,7 +36,7 @@ export default function HomePage() {
           image="/application.png"
           reversed
         />
-        <CTASection />
+        {/* CTA removed per request */}
       </main>
       <Footer />
     </div>

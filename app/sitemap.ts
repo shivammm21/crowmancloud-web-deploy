@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/status',
     '/terms',
     '/updates',
+    '/vulnerability',
   ];
 
   const now = new Date();

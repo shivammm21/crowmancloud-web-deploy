@@ -2,12 +2,13 @@
 import { motion } from 'framer-motion';
 import ShowcaseGlow from './ShowcaseGlow';
 
-export default function ShowcaseSection({ id, eyebrow, title, description, image, reversed = false }: {
+export default function ShowcaseSection({ id, eyebrow, title, description, image, details, reversed = false }: {
   id: string;
   eyebrow: string;
   title: string;
   description: string;
   image: string;
+  details?: string[];
   reversed?: boolean;
 }) {
   return (
@@ -23,6 +24,16 @@ export default function ShowcaseSection({ id, eyebrow, title, description, image
             <p className="text-sm text-brand-300">{eyebrow}</p>
             <h3 className="mt-2 text-3xl font-semibold tracking-tight">{title}</h3>
             <p className="mt-3 text-neutral-300">{description}</p>
+            {details && details.length > 0 && (
+              <ul className="mt-4 space-y-2 text-neutral-300">
+                {details.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="text-brand-400">✔</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}

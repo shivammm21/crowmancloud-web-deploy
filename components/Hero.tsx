@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import ShowcaseGlow from './ShowcaseGlow';
 import Link from 'next/link';
 import { Squares } from '@/components/ui/squares-background';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Hero() {
+  const { isAuthenticated } = useAuth();
   return (
     <section className="relative isolate pt-16 sm:pt-24 pb-16 sm:pb-24 overflow-hidden">
       {/* Animated squares background */}
@@ -60,8 +62,15 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.18 }}
             className="mt-10 flex items-center justify-center gap-3"
           >
-            <Link href="#" className="rounded-md bg-brand-500 hover:bg-brand-400 px-5 py-3 font-medium text-white transition">Get started</Link>
+            {!isAuthenticated && (
+              <Link href="#" className="rounded-md bg-brand-500 hover:bg-brand-400 px-5 py-3 font-medium text-white transition">Get started</Link>
+            )}
             <Link href="#features" className="rounded-md bg-white/10 hover:bg-white/20 px-5 py-3 font-medium transition">Explore features</Link>
+            {isAuthenticated && (
+              <Link href="/vulnerability" className="rounded-md bg-emerald-500 hover:bg-emerald-400 px-5 py-3 font-medium text-white transition">
+                Check vulnerability
+              </Link>
+            )}
           </motion.div>
         </div>
 

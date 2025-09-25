@@ -15,15 +15,21 @@ export const metadata: Metadata = {
     template: '%s | crowmancloud',
   },
   description:
-    'CrowmanCloud is an AI-powered developer experience platform for building, deploying, and scaling apps faster. Try CrowmanCloud tools, docs, and community.',
+    'CrowmanCloud is an AI-powered pre-deployment platform. Analyze your repo, auto-provision cloud essentials, get cost-aware guidance, and check vulnerabilities — all from a secure, local-first app.',
   keywords: [
     'crowmancloud',
     'crow man cloud',
     'crowman cloud',
-    'ai developer platform',
-    'next.js',
-    'cloud devex',
-    'developer experience',
+    'AI developer platform',
+    'cloud deployment',
+    'pre-deployment analysis',
+    'infrastructure as code',
+    'cost estimation',
+    'vulnerability scanning',
+    'DevOps automation',
+    'Next.js',
+    'AWS', 'GCP', 'Azure',
+    'CICD',
   ],
   category: 'technology',
   alternates: {
@@ -35,13 +41,13 @@ export const metadata: Metadata = {
     siteName: 'crowmancloud',
     title: 'crowmancloud — Build, Deploy, and Scale Faster',
     description:
-      'AI-powered developer experience platform. Explore features, docs, pricing and join the crowmancloud community.',
+      'AI-powered pre-deployment platform: repo analysis, infra blueprints, cost guidance, and vulnerability checks.',
     images: [
       {
-        url: '/application.png',
+        url: '/img/crowman-sky-diving.jpeg',
         width: 1200,
         height: 630,
-        alt: 'crowmancloud application preview',
+        alt: 'CrowmanCloud hero preview',
       },
     ],
   },
@@ -49,8 +55,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'crowmancloud — AI-Powered Cloud Developer Experience',
     description:
-      'Build, deploy, and scale faster with crowmancloud. Tools, docs, and community for modern app development.',
-    images: ['/application.png'],
+      'Analyze your repo, auto-provision cloud resources, estimate costs, and check vulnerabilities with crowmancloud.',
+    images: ['/img/crowman-sky-diving.jpeg'],
   },
   robots: {
     index: true,
@@ -64,6 +70,13 @@ export const metadata: Metadata = {
     },
   },
   icons: { icon: '/favicon.svg' },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    other: {
+      'bing': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -87,17 +100,36 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
   };
 
+  const appJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'CrowmanCloud',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
+    url: siteUrl,
+    description:
+      'AI-powered pre-deployment platform for repo analysis, infra blueprints, cost guidance, and vulnerability checks.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
         <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || ""}>
           {children}
         </GoogleOAuthProvider>
-        <Script id="ld-org" type="application/ld+json">
+        <Script id="ld-organization" type="application/ld+json">
           {JSON.stringify(orgJsonLd)}
         </Script>
         <Script id="ld-website" type="application/ld+json">
           {JSON.stringify(websiteJsonLd)}
+        </Script>
+        <Script id="ld-application" type="application/ld+json">
+          {JSON.stringify(appJsonLd)}
         </Script>
       </body>
     </html>
