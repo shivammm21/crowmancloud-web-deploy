@@ -1,4 +1,6 @@
 {
-  "/signin/page": "app/signin/page.js",
-  "/vulnerability/page": "app/vulnerability/page.js"
+  "/page": "app/page.js",
+  "/community/page": "app/community/page.js",
+  "/vulnerability/page": "app/vulnerability/page.js",
+  "/pricing/page": "app/pricing/page.js"
 }

@@ -1,5 +1,16 @@
 {
   "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
     "/vulnerability/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -10,16 +21,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/vulnerability/layout.js"
     ],
-    "/layout": [
+    "/pricing/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
+      "static/chunks/app/pricing/page.js"
     ],
-    "/signin/page": [
+    "/pricing/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/signin/page.js"
+      "static/chunks/app/pricing/layout.js"
+    ],
+    "/community/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/community/page.js"
     ]
   }
 }

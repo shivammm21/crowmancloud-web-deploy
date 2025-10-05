@@ -13,8 +13,7 @@ export default function PricingPage() {
       price: "$0",
       tagline: "For exploring locally",
       features: [
-        "2 checks",
-        "25 files check",
+        "7 files check",
         "Only vulnerability checks",
         "Single check",
         "Community support",

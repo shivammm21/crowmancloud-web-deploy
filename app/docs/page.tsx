@@ -76,7 +76,7 @@ export default function DocsPage() {
               <section>
                 <h2 className="text-2xl font-semibold tracking-tight">Plans & Limits</h2>
                 <ul className="mt-3 space-y-2 text-neutral-300 list-disc list-inside">
-                  <li>Starter: 2 checks/month, up to 25 files/run, vulnerability checks.</li>
+                  <li>Starter: 7 files check/month, vulnerability checks.</li>
                   <li>Pro: 10 checks/month, unlimited files/run, multi‑checks, offline IDE, cloud recs, cost estimation.</li>
                   <li>Team: 10 checks/month, unlimited files/run, multi‑checks, offline IDE, team collaboration.</li>
                 </ul>

@@ -23,7 +23,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "How many checks do I get per month?",
-    a: "Starter includes 2 checks per month. Pro includes 10 checks per month. Team includes 10 checks per month.",
+    a: "Starter includes 7 files check per month. Pro includes 10 checks per month. Team includes 10 checks per month.",
   },
   {
     q: "How many files can be checked?",
