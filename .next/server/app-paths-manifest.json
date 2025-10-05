@@ -1,7 +1,4 @@
 {
-  "/page": "app/page.js",
-  "/showcase/page": "app/showcase/page.js",
   "/signin/page": "app/signin/page.js",
-  "/community/page": "app/community/page.js",
   "/vulnerability/page": "app/vulnerability/page.js"
 }

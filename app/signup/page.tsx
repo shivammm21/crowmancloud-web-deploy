@@ -23,7 +23,7 @@ export default function SignUpPage() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('https://crowmancloud-backend-starter.onrender.com/api/auth/google', {
+      const response = await fetch('http://localhost:8000/api/auth/google', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export default function SignUpPage() {
     setSuccess(null);
     setLoading(true);
     try {
-      const res = await fetch("https://crowmancloud-backend-starter.onrender.com/api/auth/register", {
+      const res = await fetch("http://localhost:8000/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),

@@ -36,9 +36,10 @@ declare namespace __next_route_internal_types__ {
     | `/docs`
     | `/faq`
     | `/features`
-    | `/pricing`
     | `/privacy`
     | `/profile`
+    | `/pricing`
+    | `/security-demo`
     | `/showcase`
     | `/signin`
     | `/signup`
