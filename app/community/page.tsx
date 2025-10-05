@@ -5,7 +5,7 @@ import type { Route } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedBG from "@/components/AnimatedBG";
-import { Github, Map, Newspaper, MessageCircle } from "lucide-react";
+import { Github, Map, Newspaper, MessageCircle, Users } from "lucide-react";
 
 type InternalResource = {
   title: string;
@@ -51,6 +51,13 @@ export default function CommunityPage() {
       href: "/updates" as Route,
       cta: "Read updates",
     },
+    {
+      title: "Discussions",
+      desc: "Join community discussions, ask questions, and share knowledge with other developers.",
+      icon: Users,
+      href: "/discussions" as Route,
+      cta: "Join discussions",
+    },
   ];
 
   return (
@@ -94,7 +101,7 @@ export default function CommunityPage() {
             </motion.div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
             {resources.map((item, idx) => {
               const Card = (
                 <motion.div
@@ -103,7 +110,7 @@ export default function CommunityPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.06 }}
-                  className={`w-full max-w-sm rounded-xl border border-white/10 bg-white/5 p-6 ${"external" in item ? "" : "cursor-pointer hover:bg-white/[0.06]"}`}
+                  className={`w-full max-w-sm h-48 rounded-xl border border-white/10 bg-white/5 p-6 flex flex-col ${"external" in item ? "" : "cursor-pointer hover:bg-white/[0.06]"}`}
                 >
                   <div className="flex items-center gap-3">
                     <div className="rounded-md bg-brand-500/20 text-brand-300 p-2">
@@ -111,8 +118,8 @@ export default function CommunityPage() {
                     </div>
                     <h3 className="font-medium">{item.title}</h3>
                   </div>
-                  <p className="mt-3 text-sm text-neutral-300">{item.desc}</p>
-                  <div className="mt-5">
+                  <p className="mt-3 text-sm text-neutral-300 flex-1">{item.desc}</p>
+                  <div className="mt-auto">
                     {"external" in item ? (
                       <a
                         href={item.href}

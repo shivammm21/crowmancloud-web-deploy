@@ -31,10 +31,12 @@ declare namespace __next_route_internal_types__ {
   type StaticRoutes = 
     | `/`
     | `/about`
-    | `/contact`
     | `/community`
-    | `/faq`
+    | `/contact`
     | `/docs`
+    | `/faq`
+    | `/discussions`
+    | `/status`
     | `/features`
     | `/pricing`
     | `/privacy`
@@ -43,7 +45,6 @@ declare namespace __next_route_internal_types__ {
     | `/showcase`
     | `/signin`
     | `/signup`
-    | `/status`
     | `/terms`
     | `/updates`
     | `/vulnerability`
