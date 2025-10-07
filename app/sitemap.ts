@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about',
     '/community',
     '/contact',
+    '/crowman',
     '/crowmantool',
     '/docs',
     '/faq',
