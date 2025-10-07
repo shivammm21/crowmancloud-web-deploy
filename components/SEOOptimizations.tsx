@@ -124,60 +124,64 @@ export default function SEOOptimizations() {
     // Track Core Web Vitals
     if (typeof window !== 'undefined' && 'gtag' in window) {
       const trackWebVitals = async () => {
-        const { getCLS, getFID, getFCP, getLCP, getTTFB } = await import('web-vitals');
-        
-        getCLS((metric: any) => {
-          (window as any).gtag('event', 'web_vitals', {
-            event_category: 'Web Vitals',
-            event_label: 'CLS',
-            value: Math.round(metric.value * 1000),
-            custom_parameter_1: 'crowmancloud_performance',
-            custom_parameter_2: 'cls_measurement'
+        try {
+          const { onCLS, onINP, onFCP, onLCP, onTTFB } = await import('web-vitals');
+          
+          onCLS((metric: any) => {
+            (window as any).gtag('event', 'web_vitals', {
+              event_category: 'Web Vitals',
+              event_label: 'CLS',
+              value: Math.round(metric.value * 1000),
+              custom_parameter_1: 'crowmancloud_performance',
+              custom_parameter_2: 'cls_measurement'
+            });
           });
-        });
 
-        getFID((metric: any) => {
-          (window as any).gtag('event', 'web_vitals', {
-            event_category: 'Web Vitals',
-            event_label: 'FID',
-            value: Math.round(metric.value),
-            custom_parameter_1: 'crowmancloud_performance',
-            custom_parameter_2: 'fid_measurement'
+          onINP((metric: any) => {
+            (window as any).gtag('event', 'web_vitals', {
+              event_category: 'Web Vitals',
+              event_label: 'INP',
+              value: Math.round(metric.value),
+              custom_parameter_1: 'crowmancloud_performance',
+              custom_parameter_2: 'inp_measurement'
+            });
           });
-        });
 
-        getFCP((metric: any) => {
-          (window as any).gtag('event', 'web_vitals', {
-            event_category: 'Web Vitals',
-            event_label: 'FCP',
-            value: Math.round(metric.value),
-            custom_parameter_1: 'crowmancloud_performance',
-            custom_parameter_2: 'fcp_measurement'
+          onFCP((metric: any) => {
+            (window as any).gtag('event', 'web_vitals', {
+              event_category: 'Web Vitals',
+              event_label: 'FCP',
+              value: Math.round(metric.value),
+              custom_parameter_1: 'crowmancloud_performance',
+              custom_parameter_2: 'fcp_measurement'
+            });
           });
-        });
 
-        getLCP((metric: any) => {
-          (window as any).gtag('event', 'web_vitals', {
-            event_category: 'Web Vitals',
-            event_label: 'LCP',
-            value: Math.round(metric.value),
-            custom_parameter_1: 'crowmancloud_performance',
-            custom_parameter_2: 'lcp_measurement'
+          onLCP((metric: any) => {
+            (window as any).gtag('event', 'web_vitals', {
+              event_category: 'Web Vitals',
+              event_label: 'LCP',
+              value: Math.round(metric.value),
+              custom_parameter_1: 'crowmancloud_performance',
+              custom_parameter_2: 'lcp_measurement'
+            });
           });
-        });
 
-        getTTFB((metric: any) => {
-          (window as any).gtag('event', 'web_vitals', {
-            event_category: 'Web Vitals',
-            event_label: 'TTFB',
-            value: Math.round(metric.value),
-            custom_parameter_1: 'crowmancloud_performance',
-            custom_parameter_2: 'ttfb_measurement'
+          onTTFB((metric: any) => {
+            (window as any).gtag('event', 'web_vitals', {
+              event_category: 'Web Vitals',
+              event_label: 'TTFB',
+              value: Math.round(metric.value),
+              custom_parameter_1: 'crowmancloud_performance',
+              custom_parameter_2: 'ttfb_measurement'
+            });
           });
-        });
+        } catch (error) {
+          console.warn('Web Vitals tracking failed:', error);
+        }
       };
 
-      trackWebVitals().catch(console.error);
+      trackWebVitals();
     }
   }, []);
 
